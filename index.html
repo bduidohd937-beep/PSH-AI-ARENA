@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PSH AI ARENA | 검증 관제실 V1.2</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1019;--aside:#0e1520;--surface:#141e2b;--surface2:#1a2838;--border:#293648;--muted:#91a3b8;--text:#edf3fa;--teal:#4de0c0;--blue:#8ab7ff;--orange:#ffc078;--red:#ff828e;--green:#76deb5;--shadow:0 12px 34px #0004}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.4}.shell{min-height:100vh;display:grid;grid-template-columns:238px minmax(0,1fr)}aside{background:var(--aside);border-right:1px solid var(--border);padding:24px 16px;display:flex;flex-direction:column;gap:8px;position:sticky;top:0;height:100vh}.logo{padding:0 10px 22px;border-bottom:1px solid var(--border);margin-bottom:12px}.logo-mark{background:#173d40;color:var(--teal);display:inline-flex;width:38px;height:38px;border-radius:12px;align-items:center;justify-content:center;font-weight:900;font-size:17px;margin-bottom:12px}.logo strong{display:block;font-size:18px;letter-spacing:-.4px}.logo small{display:block;color:var(--muted);line-height:1.8}.navbtn{border:0;background:none;color:#a8b7c9;width:100%;padding:12px 14px;border-radius:11px;text-align:left;font-weight:650;display:flex;align-items:center;gap:11px}.navbtn:hover{background:#192a39;color:white}.navbtn.active{background:#193d43;color:#80efdc}.navbtn .ico{width:20px;text-align:center;font-size:16px}.asidebottom{margin-top:auto;padding:14px 10px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.8}main{max-width:1570px;width:100%;margin:auto;padding:30px 38px 75px;min-width:0}.header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:26px;flex-wrap:wrap}.eyebrow{text-transform:uppercase;color:var(--teal);font-size:11px;font-weight:800;letter-spacing:2px}.header h1{margin:6px 0 7px;letter-spacing:-1px;font-size:29px}.sub{color:var(--muted);font-size:13px}.headtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{background:#223348;border:1px solid #34485f;border-radius:9px;color:#e5efff;padding:10px 13px;font-weight:650}.btn:hover{border-color:#6b8eb1;background:#293d54}.btn.primary{background:#0e6c65;border-color:#148a80;color:white}.btn.primary:hover{background:#16847a}.btn.danger{background:#4a252f;border-color:#784153;color:#ffc4cc}.btn.sm{padding:7px 10px;font-size:12px}.badge{display:inline-flex;align-items:center;gap:5px;border-radius:7px;padding:4px 8px;background:#2a3545;color:#bac7d6;font-size:11px;font-weight:750;white-space:nowrap}.badge.good{background:#133d34;color:#8de6bc}.badge.warn{background:#49371e;color:#ffcc87}.badge.bad{background:#522e39;color:#ffa8b0}.badge.info{background:#213856;color:#9bc8fa}.badge.neutral{background:#283341;color:#b1c0d1}.dot{display:inline-block;width:6px;height:6px;background:currentColor;border-radius:50%}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:18px}.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow)}.kpi{padding:19px}.kpi .lab{color:var(--muted);font-size:12px;font-weight:700}.kpi .num{font-size:28px;font-weight:850;letter-spacing:-1px;margin:14px 0 7px}.kpi .foot{font-size:11px;color:var(--muted);line-height:1.6}.num.teal{color:var(--teal)}.num.orange{color:var(--orange)}.num.red{color:var(--red)}.twocol{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;margin-bottom:18px}.rowhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.panel h2{font-size:16px;letter-spacing:-.3px;margin:0}.panel h3{font-size:13px;margin:0 0 10px}.muted{color:var(--muted)}.lead-issue{background:linear-gradient(115deg,#30202d,#211f30 70%);border:1px solid #6a3b4a}.lead-issue h2{font-size:19px;margin:10px 0}.lead-issue p{line-height:1.7;color:#cad4df;margin:0 0 14px}.lead-issue .rowhead{margin-bottom:0}.minirow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.meta{font-size:12px;color:var(--muted)}.cardlist{display:flex;flex-direction:column;gap:10px}.linecard{border:1px solid #334154;border-radius:10px;padding:13px 14px;background:#1b2736}.linecard strong{font-size:13px}.linecard .details{font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px}.track{height:8px;border-radius:8px;background:#303f52;overflow:hidden;margin-top:11px}.track span{display:block;height:100%;background:linear-gradient(90deg,#168f83,#58d8be)}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.field{background:#0e1723;border:1px solid #354458;border-radius:9px;color:var(--text);padding:10px 12px;min-width:0}.search{width:255px;max-width:100%}.tablewrap{width:100%;overflow:auto;border:1px solid var(--border);border-radius:11px}.data-table{width:100%;border-collapse:collapse;text-align:left;min-width:770px}.data-table th{background:#1b2937;color:#9fb1c6;font-size:11px;text-transform:uppercase;letter-spacing:.4px}.data-table td,.data-table th{padding:13px 14px;border-bottom:1px solid #273344;vertical-align:middle}.data-table tr:last-child td{border-bottom:none}.data-table tbody tr{background:#16212e}.data-table tbody tr:hover{background:#1c2b3d}.data-table td{font-size:12px;line-height:1.5}.data-table .small{font-size:11px;color:var(--muted)}.textbtn{padding:0;border:none;background:none;color:var(--blue);font-weight:800}.textbtn:hover{text-decoration:underline}.panel-note{line-height:1.75;color:var(--muted);font-size:12px;margin-top:12px}.sectionlead{margin-bottom:19px}.sectionlead h2{margin:0 0 8px;font-size:22px}.sectionlead p{margin:0;color:var(--muted);line-height:1.8}.full{margin-bottom:18px}.statrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.pillrow{display:flex;gap:6px;flex-wrap:wrap}.slot{margin:10px 0;padding:14px;background:#172635;border:1px solid #32465b;border-radius:12px}.rank{font-size:11px;font-weight:850;color:#77dac6;background:#1f4b47;border-radius:7px;padding:5px 7px}.timeline{border-left:2px solid #3b5266;margin-left:8px;padding-left:19px}.event{position:relative;margin:0 0 15px}.event:before{content:'';position:absolute;left:-25px;top:5px;width:10px;height:10px;border-radius:50%;background:#7598bc;border:2px solid #1b2937}.event strong{font-size:13px}.event p{color:var(--muted);line-height:1.7;font-size:12px}.protection{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.toolcall{border:1px solid #405063;padding:15px;background:#1b2a3a;border-radius:11px}.toolcall strong{display:block;margin-bottom:10px}.toolcall p{color:var(--muted);font-size:12px;line-height:1.75}.footnote{border-top:1px solid var(--border);margin-top:30px;padding-top:19px;color:#71859d;font-size:11px}.empty{color:var(--muted);padding:26px;text-align:center;font-size:13px}.dialogoverlay{position:fixed;inset:0;background:#030710ca;z-index:30;display:flex;justify-content:center;align-items:center;padding:20px}.dialog{width:690px;max-width:100%;max-height:92vh;overflow:auto;border:1px solid #51677c;background:#142131;box-shadow:0 25px 85px #000a;border-radius:16px;padding:24px}.dialog h2{margin:0 0 5px;font-size:21px}.dialog .hint{color:var(--muted);font-size:12px;margin-bottom:17px;line-height:1.7}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.formgroup{display:flex;flex-direction:column;gap:7px;min-width:0}.formgroup.wide{grid-column:1/-1}.formgroup label{font-size:11px;color:#adbed1;font-weight:750}.formgroup .field{width:100%}textarea.field{min-height:86px;resize:vertical}.dialogfooter{display:flex;justify-content:flex-end;gap:8px;margin-top:22px;flex-wrap:wrap}.smallnote{font-size:11px;color:var(--muted)}.inlineaction{display:flex;gap:6px;align-items:center}.recommend{padding:16px;border-radius:12px;border:1px solid #32495a;background:#192938;margin-bottom:12px}.recommend h3{font-size:15px;margin:6px 0}.recommend p{font-size:12px;color:var(--muted);line-height:1.6;margin:7px 0}.recommended-grid{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}.decision-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:12px}.decision-row select{width:140px}.numInput{max-width:125px}.monospace{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.toptabs{display:none}
+@media(max-width:1200px){.kpis{grid-template-columns:repeat(3,1fr)}.twocol{grid-template-columns:1fr}.protection{grid-template-columns:1fr 1fr}}@media(max-width:850px){.shell{display:block}aside{height:auto;position:static;padding:12px;border-right:0;border-bottom:1px solid var(--border)}.logo{padding:5px;margin:0;border:0}.logo strong{font-size:15px}.logo-mark,.logo small,.asidebottom{display:none}nav{display:flex;overflow:auto}.navbtn{white-space:nowrap;width:auto;padding:10px}.navbtn .ico{display:none}main{padding:22px 15px 45px}.header h1{font-size:23px}.kpis{grid-template-columns:repeat(2,1fr)}.protection{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}}@media(max-width:480px){.kpis{grid-template-columns:1fr 1fr}.kpi{padding:14px}.kpi .num{font-size:22px}.headtools{width:100%}}
+
+/* V1.1 evidence uploader + MSG16 log diagnostics */
+.diagstats{grid-template-columns:repeat(3,1fr);margin-bottom:18px}
+.diagdrop{border:2px dashed #3c6774;background:#15252d;border-radius:14px;padding:27px;text-align:center;line-height:2;color:#d9eeeb;cursor:pointer}
+.diagdrop.dragging,.diagdrop:hover{border-color:var(--teal);background:#183c42}
+.diagdrop:focus{outline:2px solid var(--teal);outline-offset:3px}
+.diagalert{padding:12px 13px;border:1px solid #7f5a36;border-radius:9px;background:#412d1b;color:#ffd39c;font-size:12px;line-height:1.7}
+.diaggap{max-width:960px;width:960px}
+.diagscroll{overflow:auto;max-height:68vh;display:flex;flex-direction:column;gap:12px;padding-right:7px}
+.diagitem{background:#111e2b;border:1px solid #31475b;border-radius:12px;padding:17px;display:flex;flex-direction:column;gap:9px}
+.diagoptions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.diagoptions select{width:100%;max-width:100%;margin-top:5px}
+.diagtoggle{display:flex;align-items:center;gap:8px;cursor:pointer}
+.diagtoggle input{accent-color:var(--teal)}
+.diagtrace{max-height:230px;overflow:auto;padding:9px 12px;background:#0c1723;border:1px solid #283a51;border-radius:8px;font-size:11px;line-height:2;overflow-wrap:anywhere}
+.diagtrace>div{border-bottom:1px solid #26354a;padding:5px 0}
+.diagtrace code{font-family:ui-monospace,Consolas,monospace}
+.diagraw{white-space:pre-wrap;overflow-wrap:anywhere;background:#0d1824;border:1px solid #334456;border-radius:8px;padding:13px;font-size:11px;max-height:200px;overflow:auto}
+@media(max-width:850px){.diagstats{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.diagstats{grid-template-columns:1fr}.diagoptions{grid-template-columns:1fr}}
+
+.arena-kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
+.arena-drop{padding:26px;border:1px dashed #59728a;border-radius:12px;background:#132638;color:#a6bdd4;text-align:center;line-height:2;cursor:pointer;margin:12px 0}
+.arena-drop:hover{border-color:#67c8b5;background:#1a3444}
+.arena-note{border:1px solid #355e65;border-radius:9px;background:#173139;color:#bfe3e7;font-size:12px;line-height:1.8;padding:12px 15px}
+.arena-note code{color:#92e4d8}
+.arena-modal{width:920px}
+.arena-stage-scroll{max-height:58vh;overflow:auto;display:grid;gap:9px;padding:4px 2px}
+.arena-stage-item{padding:13px;border:1px solid #38495b;border-radius:10px;background:#172636;display:flex;flex-direction:column;gap:8px}
+.arena-choice{display:grid;grid-template-columns:120px minmax(0,1fr);align-items:center;gap:10px}
+.arena-stage-item .btn{align-self:flex-start}
+@media(max-width:1200px){.arena-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.arena-kpis{grid-template-columns:1fr 1fr}.arena-choice{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="shell"><aside><div class="logo"><span class="logo-mark">PSH</span><strong>AI ARENA</strong><small>DEVELOPMENT CONTROL CENTER<br>V1.2 출력 연동 · V2.4/2.4.1 기록</small></div><nav id="nav"></nav><div class="asidebottom">● 오프라인 기록 모드<br>기록 기준 2026-11-11<br>로컬 EDOPro 파일 연결 없음</div></aside><main><header class="header"><div><div class="eyebrow">PSH SYSTEMS / VERIFICATION</div><h1 id="heading">검증 관제실</h1><div class="sub" id="subtitle">최종 확인 기록: 2026-11-11 · 실시간 경기장 연동: 미설정</div></div><div class="headtools"><span class="badge neutral">● 기록 기반 대시보드</span><button class="btn sm" data-action="export-json">JSON 백업</button><button class="btn sm" data-tab="diagnostics">로그 분석</button><button class="btn sm" data-action="import-json">JSON 가져오기</button><button class="btn sm" data-action="reset">초기 기록 복원</button></div></header><div id="content"></div><footer class="footnote">데이터 저장 위치: 현재 브라우저 localStorage · 이 앱은 실제 EDOPro, CDB, Lua 파일을 읽거나 변경하지 않습니다. 보고된 회귀 테스트와 실제 경기 완주는 별개의 증거입니다. · V1.2 수동 출력 파일 검사는 실제 대전 실행/승인을 뜻하지 않습니다.</footer></main></div>
+<input id="arenaFilePicker" type="file" accept=".json,.jsonl,.csv,.txt,.log,.zip,.yrp,.yrpx" multiple hidden><input id="arenaFolderPicker" type="file" webkitdirectory multiple hidden><input id="logPicker" type="file" accept=".json,.jsonl,.csv,.txt,.log,.zip" multiple hidden><input id="filePicker" type="file" accept=".json,application/json" hidden><div id="modalRoot"></div>
+<script>
+'use strict';
+const KEY='psh-ai-arena-control-v1',SCHEMA=1;
+const tabs=[['overview','⌂','종합 현황'],['sessions','▣','경기 세션'],['features','◇','구현 현황'],['events','↗','실제 대전 검증'],['tests','✓','회귀 테스트'],['issues','⚑','결함 · 보류'],['protection','▤','원본 보호'],['weekly','◷','주간 우선순위'],['diagnostics','◎','로그·교착 분석']];
+const clone=x=>JSON.parse(JSON.stringify(x));
+const seed={schemaVersion:SCHEMA,recordDate:'2026-11-11',sessions:[{id:'web-cosmocode-v5-2-4-20261111-180643-1bb2',version:'V2.4',deck:'코스모코드 V5.2.4 미러 덱',date:'2026-11-11',status:'차단',targetGames:2,completedGames:0,wins:null,losses:null,draws:null,resultVerified:'미확인',logCount:null,logRef:'로그는 V2.4 세션 기록에 보고됨. 실제 파일 경로 미확인',replayRef:'',replayStatus:'미확인',csv:'구현보고',json:'구현보고',zip:'구현보고',history:'시도 1: user_stop. 재개 후 프롬프트 220에서 MSG16 count=0 forced=0에 -1 응답, core_response_result 없음, OCG_DuelProcess 내부 블로킹, 220초 watchdog abort 및 blocked. 두 번째 경기 미실행.',notes:'목표 2경기 / 완료 0경기. 승패 수치는 미확인.'}],events:[{id:'EVT-001',date:'2026-11-11',version:'V2.4',sessionId:'web-cosmocode-v5-2-4-20261111-180643-1bb2',title:'첫 웹 세션 중지',status:'기록 확인',prompt:'',result:'user_stop',evidence:'목표 2경기 세션 첫 시도 사용자 중지. 대전 완료 증빙 없음.'},{id:'EVT-002',date:'2026-11-11',version:'V2.4',sessionId:'web-cosmocode-v5-2-4-20261111-180643-1bb2',title:'프롬프트 220 MSG16 이후 정지',status:'차단',prompt:'220',result:'watchdog abort',evidence:'MSG16 count=0 forced=0 → 합법적 -1 응답 뒤 core_response_result 없이 OCG_DuelProcess 반환 정지. 220초 watchdog abort.'},{id:'EVT-003',date:'2026-11-11',version:'V2.4.1',sessionId:'미확인',title:'프롬프트 275에서 재교착',status:'차단',prompt:'275',result:'watchdog abort',evidence:'220 우회 후 275에서 다시 정지. MSG16 이후 OCG_DuelProcess 미반환 공통 패턴. 근본 원인 미확정, 실제 경기 완료 미입증.'}],tests:[{id:'TEST-001',date:'2026-11-11',version:'V2.4',kind:'웹 테스트',passed:9,total:9,report:'기록 확인',rerun:'미실행',evidence:'2026-11-11 웹 경기장 개발 보고: 9/9'},{id:'TEST-002',date:'2026-11-11',version:'V2.4',kind:'전체 회귀 테스트',passed:252,total:252,report:'기록 확인',rerun:'미실행',evidence:'2026-11-11 웹 경기장 개발 보고: 252/252'},{id:'TEST-003',date:'2026-11-11',version:'V2.4.1',kind:'전체 회귀 테스트',passed:254,total:254,report:'기록 확인',rerun:'미실행',evidence:'2026-11-11 V2.4.1 후속 보고: 254/254; 실전 275 교착과 별개'}],features:[{id:'FEAT-001',title:'웹 경기장 실행',version:'V2.4',category:'운영',status:'구현보고',verified:'미확인',detail:'AI_ARENA_WEB.cmd → http://127.0.0.1:8765'},{id:'FEAT-002',title:'경기 수 1~1000 설정',version:'V2.4',category:'운영',status:'구현보고',verified:'미확인',detail:'세션별 목표 경기 수 지정'},{id:'FEAT-003',title:'시작 · 중지 · 재개',version:'V2.4',category:'제어',status:'구현보고',verified:'기록 확인',detail:'시작/중지/재개 UI. 실전 완료는 확인되지 않음'},{id:'FEAT-004',title:'3초 자동 갱신',version:'V2.4',category:'대시보드',status:'구현보고',verified:'미확인',detail:'세션 진행 상황 주기적 표시'},{id:'FEAT-005',title:'세션 승패 · 로그 · 리플레이 표시',version:'V2.4',category:'기록',status:'구현보고',verified:'미확인',detail:'표시 기능 보고. 실제 완료 경기 결과 및 리플레이 파일 검증 미확인'},{id:'FEAT-006',title:'CSV / JSON / ZIP 다운로드',version:'V2.4',category:'내보내기',status:'구현보고',verified:'미확인',detail:'다운로드 기능 구현 보고. 실제 파일 생성/무결성은 별도 검증 필요'},{id:'FEAT-007',title:'Host / Origin / Referer / 토큰 · 경로 검증',version:'V2.4',category:'보안',status:'구현보고',verified:'기록 확인',detail:'HTTP 보호 테스트 통과 보고. 실제 전체 보안 보증 아님'},{id:'FEAT-008',title:'동시 실행 충돌 차단 · 중지 레이스 보완',version:'V2.4',category:'안정성',status:'구현보고',verified:'기록 확인',detail:'개발 보고 및 자동 테스트 통과. MSG16 실전 교착은 미해결'}],issues:[{id:'ISSUE-001',title:'MSG16 응답 이후 OCG_DuelProcess 교착',priority:'P0',status:'미해결',blocking:true,created:'2026-11-11',owner:'미지정',depends:'',evidence:'V2.4 prompt 220 / V2.4.1 prompt 275. MSG16 count=0 forced=0, -1 응답 후 OCG_DuelProcess 미반환. 근본 원인 미확정.',resolution:'',retest:'미확인',notes:'실제 웹 대전 차단. 먼저 루프/체인/응답경로 계측 및 코어 반환 원인 규명.'},{id:'ISSUE-002',title:'실제 웹 경기 완주 및 승패 검증',priority:'P1',status:'미해결',blocking:true,created:'2026-11-11',owner:'미지정',depends:'ISSUE-001',evidence:'실제 완료 0/2(기록된 V2.4 세션). 정상 완주 증빙 없음.',resolution:'',retest:'미확인',notes:'MSG16 교착 해결 후 실제 웹 경기 2회 완주 및 결과 확인.'},{id:'ISSUE-003',title:'CSV/JSON/ZIP 실제 파일 · 무결성 검증',priority:'P1',status:'미해결',blocking:false,created:'2026-11-11',owner:'미지정',depends:'',evidence:'기능 구현 보고, 실제 세션 파일 다운로드 및 내용 대조 증빙 미확인.',resolution:'',retest:'미확인',notes:'세션당 실제 파일 존재, 다운로드, 필드/레코드, ZIP 구조까지 대조.'},{id:'ISSUE-004',title:'EDOPro/CDB/Lua 원본 보호 해시 검증',priority:'P1',status:'미해결',blocking:false,created:'2026-11-11',owner:'미지정',depends:'',evidence:'원본 해시 전후 비교 및 백업 복원 실증 미확인.',resolution:'',retest:'미확인',notes:'원본은 직접 수정하지 않고 복사본에서 테스트. 작업별 보호 여부 별도 확인.'},{id:'ISSUE-005',title:'실제 승률·성능 통계 측정',priority:'P2',status:'보류',blocking:false,created:'2026-11-11',owner:'미지정',depends:'ISSUE-001,ISSUE-002',evidence:'완료된 경기의 승패 데이터가 부족하여 성능 측정 불가.',resolution:'',retest:'미확인',notes:'안정적 완주와 리플레이 확보 후 진행.'}],protection:[{id:'PROTECT-EDOPRO',target:'EDOPro',state:'미확인',hashBefore:'',hashAfter:'',backup:'미확인',policy:'원본 실행파일/설치본 직접 수정 금지. 별도 복사본 검증',detail:'관제실은 EDOPro 파일을 읽거나 수정하지 않음. 실제 무변경 해시 증거는 없음.'},{id:'PROTECT-CDB',target:'CDB',state:'미확인',hashBefore:'',hashAfter:'',backup:'미확인',policy:'복사본 CDB와 사전 백업 활용, 수정 전후 해시 확인',detail:'기존 설치/패치 작업 기록과 관제실 보호 범위는 구분해야 함.'},{id:'PROTECT-LUA',target:'Lua',state:'미확인',hashBefore:'',hashAfter:'',backup:'미확인',policy:'Lua 스크립트 원본 백업, 테스트 복사본 분리',detail:'원본 무변경의 SHA256 전후 비교는 미확인.'}],weeklyDecisions:{}};
+let state=load(),tab='overview',query='',statusFilter='전체';state.artifacts??=[];
+function load(){try{let obj=JSON.parse(localStorage.getItem(KEY));if(isValid(obj)){obj.artifacts??=[];return obj}}catch(e){}return clone(seed)}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){alert('브라우저 저장소에 저장하지 못했습니다. JSON 백업을 내려받으세요.')}}
+function isValid(v){return v&&(!v.artifacts||(Array.isArray(v.artifacts)&&v.artifacts.every(x=>x&&typeof x.id==='string'&&typeof x.name==='string'&&x.trace&&x.trace.counts&&Array.isArray(x.trace.events))))&&v.schemaVersion===SCHEMA&&['sessions','events','tests','features','issues','protection'].every(k=>Array.isArray(v[k]))&&v.weeklyDecisions&&typeof v.weeklyDecisions==='object'}
+function h(x){return String(x??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function val(x){return x===null||x===undefined||x===''?'미확인':h(x)}
+function tag(x){x=String(x??'미확인');let type=/차단|P0|실패|오류/.test(x)?'bad':/보류|P1|진행|대기/.test(x)?'warn':/해결|통과|확인됨|다운로드 검증|승인됨/.test(x)?'good':/구현보고|기록 확인|P2|P3/.test(x)?'info':'neutral';return `<span class="badge ${type}"><span class="dot"></span>${h(x)}</span>`}
+function nav(){document.getElementById('nav').innerHTML=tabs.map(([id,ico,name])=>`<button class="navbtn ${tab===id?'active':''}" data-tab="${id}"><span class="ico">${ico}</span>${name}</button>`).join('')}
+function seoulDay(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())}
+function monday(){const s=seoulDay();let d=new Date(s+'T12:00:00Z');let offset=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-offset);return d.toISOString().slice(0,10)}
+function weekEnd(start){const d=new Date(start+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+6);return d.toISOString().slice(0,10)}
+const weight={P0:4,P1:3,P2:2,P3:1};
+function sortedOpen(){return state.issues.filter(x=>x.status==='미해결').sort((a,b)=>(weight[b.priority]||0)-(weight[a.priority]||0)||Number(b.blocking)-Number(a.blocking)||(a.created||'').localeCompare(b.created||'')||a.id.localeCompare(b.id))}
+function topIssue(){return sortedOpen()[0]}
+function unmet(issue){const ids=(issue.depends||'').split(',').map(x=>x.trim()).filter(Boolean);return ids.filter(id=>state.issues.some(x=>x.id===id&&x.status!=='해결됨'))}
+function picks(){return state.issues.filter(x=>x.status==='미해결').map(x=>{const blockers=unmet(x);const score=({P0:100,P1:65,P2:35,P3:15}[x.priority]||0)+(x.blocking?25:0)+(!x.resolution?10:0)-(blockers.length?35:0);return {...x,score,blockers}}).sort((a,b)=>b.score-a.score||a.created.localeCompare(b.created)||a.id.localeCompare(b.id)).slice(0,3)}
+function kpi(label,num,foot,color=''){return `<article class="panel kpi"><div class="lab">${h(label)}</div><div class="num ${color}">${h(num)}</div><div class="foot">${foot}</div></article>`}
+function sessionProgress(s){if(s.targetGames===null||s.completedGames===null||!s.targetGames)return '미확인';return `${s.completedGames}/${s.targetGames}`}
+function progressBar(s){let p=s.targetGames>0&&s.completedGames!==null?Math.min(100,100*s.completedGames/s.targetGames):0;return `<div class="track"><span style="width:${p}%"></span></div>`}
+function head(title,txt){return `<div class="sectionlead"><h2>${h(title)}</h2><p>${txt}</p></div>`}
+function table(columns,rows){return `<div class="tablewrap"><table class="data-table"><thead><tr>${columns.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.join('')||`<tr><td colspan="${columns.length}" class="empty">해당 항목이 없습니다.</td></tr>`}</tbody></table></div>`}
+function panel(title,contents,tools=''){return `<section class="panel full"><div class="rowhead"><h2>${title}</h2><div>${tools}</div></div>${contents}</section>`}
+function actionBtn(type,id,label='수정'){return `<button class="textbtn" data-edit="${type}" data-id="${encodeURIComponent(id)}">${label}</button>`}
+function overview(){let ts=state.tests.filter(x=>x.version==='V2.4'),r1=state.tests.find(x=>x.version==='V2.4.1');let totalTarget=state.sessions.reduce((a,s)=>a+(s.targetGames||0),0),completed=state.sessions.reduce((a,s)=>a+(s.completedGames||0),0),p0=state.issues.filter(x=>x.priority==='P0'&&x.status==='미해결').length,protect=state.protection.filter(x=>x.state==='확인됨').length;let top=topIssue();return `<div class="grid kpis">${kpi('목표 / 완료 경기',`${completed} / ${totalTarget}`,'기록된 세션 기준 · 승률 산정 불가','teal')}${kpi('V2.4 웹 테스트',ts.find(x=>x.kind.includes('웹'))?`${ts.find(x=>x.kind.includes('웹')).passed}/${ts.find(x=>x.kind.includes('웹')).total}`:'미확인','과거 테스트 보고 · 재실행 아님')}${kpi('V2.4 전체 회귀',ts.find(x=>x.kind.includes('전체'))?`${ts.find(x=>x.kind.includes('전체')).passed}/${ts.find(x=>x.kind.includes('전체')).total}`:'미확인','V2.4.1: '+(r1?`${r1.passed}/${r1.total}`:'미확인'))}${kpi('미해결 P0 결함',p0,'최우선 장애 추적','red')}${kpi('원본 보호 검증',`${protect}/${state.protection.length}`,'해시 증거 확인 완료 항목','orange')}</div><div class="twocol"><section class="panel lead-issue"><div class="rowhead"><span class="badge bad">● CURRENT BLOCKER</span><span class="meta">열린 이슈 자동 선택</span></div>${top?`<h2>${h(top.id)} — ${h(top.title)}</h2><p>${h(top.evidence)}</p><div class="minirow">${tag(top.priority)}${tag(top.status)}${top.blocking?tag('실대전 차단'):''}<button class="btn sm" data-tab="issues">결함 관리</button></div>`:`<h2>열린 결함이 없습니다</h2><p>새 이슈를 추가하면 우선순위에 따라 자동 표시합니다.</p>`}</section><section class="panel"><div class="rowhead"><h2>이번 주 추천 TOP 3</h2><button class="btn sm" data-tab="weekly">승인 관리</button></div><div class="meta" style="margin-bottom:12px">${monday()} ~ ${weekEnd(monday())} · 한국시간 월요일 갱신</div><div class="cardlist">${picks().map((i,n)=>`<div class="linecard"><span class="rank">${n+1}순위</span> <strong>${h(i.title)}</strong><div class="details">${h(i.id)} · ${tag(i.priority)} ${i.blockers.length?'· 선행 '+h(i.blockers.join(', '))+' 해결 필요':''}</div></div>`).join('')||'<div class="empty">미해결 과제 없음</div>'}</div></section></div><div class="twocol"><section class="panel"><div class="rowhead"><h2>최근 경기 세션</h2><button class="btn sm" data-tab="sessions">전체 보기</button></div>${state.sessions.map(s=>`<div class="linecard" style="margin-bottom:10px"><div class="statrow"><strong class="monospace">${h(s.version)} · ${h(s.deck)}</strong>${tag(s.status)}</div><div class="statrow" style="margin-top:12px"><span class="meta">완료 ${sessionProgress(s)} 경기</span><span class="meta">승패 ${s.wins===null?'미확인':h(s.wins)+'승'}</span></div>${progressBar(s)}<div style="margin-top:12px">${actionBtn('sessions',s.id,'세션 상세 · 수정')}</div></div>`).join('')||'<div class="empty">등록된 세션 없음</div>'}</section><section class="panel"><div class="rowhead"><h2>검증 증거 분리</h2><button class="btn sm" data-tab="tests">테스트 내역</button></div><div class="cardlist"><div class="linecard"><strong>구현 보고 ≠ 실전 완주</strong><div class="details">대시보드·로그·내보내기 UI 구현과 완료된 경기 결과는 별도 검증합니다.</div></div><div class="linecard"><strong>회귀 통과 ≠ 교착 해결</strong><div class="details">9/9 · 252/252 · 254/254는 이전 개발 보고이며, 220/275 교착은 미해결입니다.</div></div><div class="linecard"><strong>원본 보호 설계 ≠ 해시 검증</strong><div class="details">관제실 자체는 EDOPro·CDB·Lua에 접근하지 않습니다. 원본 변경 여부는 따로 확인해야 합니다.</div></div></div></section></div>${panel('최근 실대전 검증 이벤트',eventRows(3),'<button class="btn sm" data-tab="events">모든 이벤트</button>')}`}
+function eventRows(limit){return `<div class="timeline">${state.events.slice().reverse().slice(0,limit||9999).map(e=>`<div class="event"><div class="minirow"><strong>${h(e.title)}</strong>${tag(e.status)}${tag(e.version)}</div><p>${h(e.evidence)}<br>프롬프트: ${val(e.prompt)} · 결과: ${h(e.result)} · ${actionBtn('events',e.id)}</p></div>`).join('')||'<div class="empty">이벤트 없음</div>'}</div>`}
+function sessions(){let entries=filtered('sessions');return `${head('경기 세션','세션별 목표·완료·승패와 로그, 리플레이, CSV/JSON/ZIP 상태를 각각 추적합니다. 완료 0경기의 승률은 계산하지 않습니다.')}<section class="panel full"><div class="rowhead"><h2>세션 목록 <span class="muted">${entries.length}</span></h2><div class="minirow"><button class="btn sm" data-action="export-sessions">CSV</button><button class="btn primary sm" data-add="sessions">+ 세션 추가</button></div></div>${filters()}${table(['세션 / 덱','목표 · 완료','승패','로그 / 리플레이','CSV · JSON · ZIP','상태','관리'],entries.map(s=>`<tr><td><strong class="monospace">${h(s.id)}</strong><div class="small">${h(s.deck)} · ${h(s.version)}</div></td><td><strong>${sessionProgress(s)}</strong>${progressBar(s)}</td><td>${s.wins===null?'미확인':`${h(s.wins)}승`}${s.losses===null?'':` ${h(s.losses)}패`}${s.draws===null?'':` ${h(s.draws)}무`}<div class="small">승률 ${s.completedGames? (s.wins===null?'미확인':(100*s.wins/s.completedGames).toFixed(1)+'%'):'산정 불가'}</div></td><td>로그: ${val(s.logCount)}<div class="small">리플레이 ${val(s.replayStatus)}</div></td><td><div class="pillrow">${tag('CSV '+s.csv)}${tag('JSON '+s.json)}${tag('ZIP '+s.zip)}</div></td><td>${tag(s.status)}</td><td>${actionBtn('sessions',s.id)}</td></tr>`))}</section>`}
+function features(){let entries=filtered('features');return `${head('구현 현황','기능을 구현했다고 보고한 것과 실제 경기에서 검증한 상태를 독립적으로 관리합니다.')}<section class="panel full"><div class="rowhead"><h2>기능 구현 기록</h2><button class="btn primary sm" data-add="features">+ 기능 추가</button></div>${filters()}${table(['기능','영역','구현 상태','검증 상태','설명','관리'],entries.map(x=>`<tr><td><strong>${h(x.title)}</strong><div class="small">${h(x.id)} · ${h(x.version)}</div></td><td>${h(x.category)}</td><td>${tag(x.status)}</td><td>${tag(x.verified)}</td><td>${h(x.detail)}</td><td>${actionBtn('features',x.id)}</td></tr>`))}</section>`}
+function events(){let entries=filtered('events');return `${head('실제 대전 검증','V2.4 프롬프트 220과 V2.4.1 프롬프트 275 교착을 분리 기록합니다. 후속 검증의 세션 ID는 미확인입니다.')}<section class="panel full"><div class="rowhead"><h2>실전 이벤트·장애 기록</h2><button class="btn primary sm" data-add="events">+ 이벤트 추가</button></div>${filters()}${table(['기록','버전/프롬프트','결과','증거·관찰','상태','관리'],entries.map(x=>`<tr><td><strong>${h(x.title)}</strong><div class="small">${h(x.id)} · ${h(x.date)}</div></td><td>${h(x.version)}<div class="small">Prompt ${val(x.prompt)}</div></td><td>${h(x.result)}</td><td>${h(x.evidence)}</td><td>${tag(x.status)}</td><td>${actionBtn('events',x.id)}</td></tr>`))}<p class="panel-note">실제 경기 완료 수·승률과 자동 테스트 통과 여부는 서로 다른 증거입니다.</p></section>`}
+function tests(){let entries=filtered('tests');return `${head('회귀 테스트','과거 보고 수치의 버전과 출처를 유지합니다. 이 관제실에서 재실행한 테스트가 아닙니다.')}<section class="panel full"><div class="rowhead"><h2>보고된 회귀 기록</h2><button class="btn primary sm" data-add="tests">+ 테스트 기록</button></div>${filters()}${table(['버전 · 구분','통과/전체','기록 출처','이 관제실에서 재실행','근거','관리'],entries.map(x=>`<tr><td><strong>${h(x.version)}</strong><div class="small">${h(x.kind)} · ${h(x.date)}</div></td><td style="font-size:17px;font-weight:900">${h(x.passed)} / ${h(x.total)}</td><td>${tag(x.report)}</td><td>${tag(x.rerun)}</td><td>${h(x.evidence)}</td><td>${actionBtn('tests',x.id)}</td></tr>`))}</section>`}
+function issues(){let entries=filtered('issues');let cur=topIssue();return `${head('결함 · 보류 관리','열린 결함 중 P0 → P1 → P2 → P3, 실전 차단, 등록순으로 최우선 과제를 자동 선정합니다. 해결 근거와 실전 재검증 상태는 별도입니다.')}<section class="panel lead-issue full"><div class="rowhead"><h2>현재 최우선 미해결 과제</h2>${cur?tag(cur.priority):tag('열린 과제 없음')}</div><h2>${cur?h(cur.title):'현재 열린 과제가 없습니다'}</h2><p>${cur?h(cur.evidence):'미해결 항목을 추가하면 자동 등록됩니다.'}</p>${cur?actionBtn('issues',cur.id,'상세 · 해결 상태 수정'):''}</section><section class="panel full"><div class="rowhead"><h2>이슈 목록</h2><div class="minirow"><button class="btn sm" data-action="export-issues">CSV</button><button class="btn primary sm" data-add="issues">+ 이슈 추가</button></div></div>${filters()}${table(['ID · 제목','우선순위','관리 상태','선행 이슈','재검증','메모','관리'],entries.map(x=>`<tr><td><strong>${h(x.title)}</strong><div class="small monospace">${h(x.id)} ${x.blocking?'· 실제 대전 차단':''}</div></td><td>${tag(x.priority)}</td><td>${tag(x.status)}</td><td>${unmet(x).length?h(unmet(x).join(', ')):'없음'}</td><td>${tag(x.retest)}</td><td>${h(x.notes)}</td><td>${actionBtn('issues',x.id)}</td></tr>`))}</section>`}
+function protection(){let entries=filtered('protection');return `${head('원본 보호 확인','EDOPro·CDB·Lua 각각의 해시, 백업, 변경 여부를 관리합니다. 이 웹앱은 로컬 원본에 접근하지 않으므로 실물 검증은 별도입니다.')}<div class="protection full">${entries.map(x=>`<section class="panel"><div class="rowhead"><h2>${h(x.target)}</h2>${tag(x.state)}</div><p class="panel-note">${h(x.policy)}</p><div class="linecard"><div class="smallnote">SHA256 변경 전</div><div class="monospace">${val(x.hashBefore)}</div><div class="smallnote" style="margin-top:12px">SHA256 변경 후</div><div class="monospace">${val(x.hashAfter)}</div><div class="smallnote" style="margin-top:12px">백업</div>${tag(x.backup)}</div><p class="panel-note">${h(x.detail)}</p>${actionBtn('protection',x.id,'검증 기록 수정')}</section>`).join('')}</div><section class="panel full"><h2>보호 검증 기준</h2><p class="panel-note">원본 보호 상태를 '확인됨'으로 변경하려면 SHA256 변경 전·후가 일치하고 백업 상태가 기록돼 있어야 합니다. 기존 설치/패치 작업이 원본을 수정하지 않았다는 의미로 자동 추정하지 않습니다.</p><button class="btn primary sm" data-add="protection">+ 보호 대상 추가</button></section>`}
+function weekly(){let ps=picks(),week=monday(),end=weekEnd(week);return `${head('주간 검증 · 승인 우선순위',`한국시간 기준 ${week} ~ ${end} · 앱을 열거나 데이터를 수정할 때 자동 재계산합니다. 서버 예약 실행·알림 기능은 없습니다.`)}<section class="panel full"><div class="rowhead"><h2>이번 주 자동 제안 TOP 3</h2>${tag('수동 승인 필요')}</div><p class="panel-note" style="margin-bottom:17px">선정 기준: P0~P3 위험도 → 실대전 차단 → 증빙 미확인 → 미해결 의존성 감점. 해결된 이슈는 자동 제외되고 다음 항목이 올라갑니다.</p>${ps.map((x,n)=>{let key=week+'::'+x.id;let decision=state.weeklyDecisions[key]||{status:'미결',notes:''};return `<div class="recommend"><div class="recommended-grid"><div><div class="minirow"><span class="rank">#${n+1} 추천</span>${tag(x.priority)}${x.blocking?tag('실전 차단'):''}</div><h3>${h(x.title)}</h3><p>${h(x.id)} · ${h(x.evidence)}</p><p>추천 이유: ${h(x.priority)} 위험도${x.blocking?', 실전 차단':''}${!x.resolution?', 검증 근거 미확정':''}${x.blockers.length?', 선행 '+h(x.blockers.join(', '))+' 해결 필요':''}.</p></div><button class="btn sm" data-edit="issues" data-id="${encodeURIComponent(x.id)}">이슈 수정</button></div><div class="decision-row"><span class="smallnote">이번 주 승인</span><select class="field" data-decision="${h(key)}"><option ${decision.status==='미결'?'selected':''}>미결</option><option ${decision.status==='승인됨'?'selected':''}>승인됨</option><option ${decision.status==='반려'?'selected':''}>반려</option><option ${decision.status==='보류'?'selected':''}>보류</option></select><input class="field" style="flex:1;min-width:180px" data-decision-note="${h(key)}" value="${h(decision.notes)}" placeholder="실행 결과·승인 근거 기록"><button class="btn sm" data-save-decision="${h(key)}">저장</button></div></div>`}).join('')||'<div class="empty">모든 미해결 이슈가 완료되었거나 보류 상태입니다.</div>'}</section>${panel('다음 검증 기준',`<div class="cardlist"><div class="linecard"><strong>교착 원인 규명 및 수정 확인</strong><div class="details">MSG16 응답 경로 → OCG_DuelProcess 반환 → 220/275 재현 경로 계측을 권장합니다.</div></div><div class="linecard"><strong>실제 대전 완료 후 승패·로그·리플레이 확인</strong><div class="details">자동 테스트 통과와 실제 완료 경기 결과를 구분합니다.</div></div><div class="linecard"><strong>다운로드 무결성 · 원본 해시 증명</strong><div class="details">CSV/JSON/ZIP 실물 대조와 EDOPro/CDB/Lua 보호 상태 확인.</div></div></div>`)}`}
+function filters(){return `<div class="filters"><input id="searchInput" class="field search" placeholder="이름·ID·상태 검색" value="${h(query)}"><select id="statusFilter" class="field"><option>전체</option><option ${statusFilter==='미해결'?'selected':''}>미해결</option><option ${statusFilter==='보류'?'selected':''}>보류</option><option ${statusFilter==='차단'?'selected':''}>차단</option><option ${statusFilter==='미확인'?'selected':''}>미확인</option><option ${statusFilter==='기록 확인'?'selected':''}>기록 확인</option><option ${statusFilter==='해결됨'?'selected':''}>해결됨</option></select></div>`}
+function filtered(type){let q=query.toLowerCase();return (state[type]||[]).filter(v=>(!q||JSON.stringify(v).toLowerCase().includes(q))&&(statusFilter==='전체'||JSON.stringify(v).includes(statusFilter)))}
+function render(){nav();let meta=tabs.find(x=>x[0]===tab);document.getElementById('heading').textContent=meta[2];document.getElementById('subtitle').textContent='기록 기준 '+state.recordDate+' · 라이브 AI 경기장 연동: 미설정 · 오늘 '+seoulDay()+' (KST)';document.getElementById('content').innerHTML=({overview,sessions,features,events,tests,issues,protection,weekly,diagnostics}[tab]||overview)()}
+const options={yesno:['미확인','확인됨'],states:['미확인','기록 확인','확인됨','차단','보류'],export:['미확인','구현보고','파일생성 확인','다운로드 검증'],retest:['미확인','진행 중','통과','실패'],priority:['P0','P1','P2','P3'],issueStatus:['미해결','보류','해결됨'],sessionStatus:['진행 중','차단','중지','완료','미확인'],featureStatus:['미확인','구현보고','구현완료','보류'],protection:['미확인','확인됨','차단'],report:['미확인','기록 확인','확인됨'],rerun:['미실행','미확인','통과','실패']};
+const fields={
+sessions:[['id','세션 ID','text'],['version','버전','text'],['deck','덱','text'],['date','날짜','text'],['status','세션 상태','sessionStatus'],['targetGames','목표 경기 수','number'],['completedGames','완료 경기 수','number'],['wins','승리 경기 수 (빈칸=미확인)','nullable'],['losses','패배 경기 수 (빈칸=미확인)','nullable'],['draws','무승부 경기 수 (빈칸=미확인)','nullable'],['resultVerified','승패 수치 검증','yesno'],['logCount','로그 개수 (빈칸=미확인)','nullable'],['logRef','로그 경로/설명','long'],['replayRef','리플레이 파일 경로/설명','text'],['replayStatus','리플레이 검증','states'],['csv','CSV 내보내기 상태','export'],['json','JSON 내보내기 상태','export'],['zip','ZIP 내보내기 상태','export'],['history','시도 내역 / 로그','long'],['notes','메모','long']],
+events:[['id','이벤트 ID','text'],['date','날짜','text'],['version','버전','text'],['sessionId','연결 세션 ID (미확인 가능)','text'],['title','제목','text'],['status','검증 상태','states'],['prompt','프롬프트','text'],['result','관찰 결과','text'],['evidence','근거·로그','long']],
+tests:[['id','테스트 ID','text'],['date','날짜','text'],['version','버전','text'],['kind','테스트 구분','text'],['passed','통과 수','number'],['total','전체 수','number'],['report','보고 근거','report'],['rerun','현재 앱 재실행 여부','rerun'],['evidence','원문 근거·설명','long']],
+features:[['id','기능 ID','text'],['title','기능명','text'],['version','버전','text'],['category','분류','text'],['status','구현 상태','featureStatus'],['verified','검증 상태','states'],['detail','설명·근거','long']],
+issues:[['id','이슈 ID','text'],['title','제목','text'],['priority','심각도','priority'],['status','관리 상태','issueStatus'],['blocking','실전 차단','boolean'],['created','등록일','text'],['owner','담당자','text'],['depends','선행 이슈 ID (쉼표 구분)','text'],['evidence','문제 증거·관찰','long'],['resolution','해결 근거','long'],['retest','실제 재검증 상태','retest'],['notes','추가 메모','long']],
+protection:[['id','보호 항목 ID','text'],['target','보호 대상','text'],['state','원본 보호 검증 상태','protection'],['hashBefore','변경 전 SHA256','text'],['hashAfter','변경 후 SHA256','text'],['backup','백업 상태','states'],['policy','보호 원칙','long'],['detail','검증 근거·메모','long']]};
+function newid(type){let prefix={sessions:'SESSION',events:'EVT',tests:'TEST',features:'FEAT',issues:'ISSUE',protection:'PROTECT'}[type];let n=1;while(state[type].some(x=>x.id===prefix+'-'+String(n).padStart(3,'0')))n++;return prefix+'-'+String(n).padStart(3,'0')}
+function edit(type,id){let item=id?state[type].find(x=>x.id===id):null;if(id&&!item)return;let data=item||Object.fromEntries(fields[type].map(([key,,kind])=>[key,kind==='number'?0:kind==='nullable'?null:kind==='boolean'?false:'']));if(!item){data.id=newid(type);if(type==='issues'){data.priority='P2';data.status='미해결';data.created=seoulDay();data.retest='미확인'}if(type==='sessions'){data.status='미확인';data.resultVerified='미확인';data.csv=data.json=data.zip='미확인';data.replayStatus='미확인';data.date=seoulDay()}if(type==='events'||type==='tests')data.date=seoulDay();if(type==='tests'){data.report='미확인';data.rerun='미실행'}if(type==='features'){data.status='미확인';data.verified='미확인'}if(type==='protection'){data.state='미확인';data.backup='미확인'}}let f=fields[type].map(([key,label,kind])=>{let value=data[key];let widget=options[kind]?`<select class="field" name="${key}">${options[kind].map(o=>`<option ${o===value?'selected':''}>${h(o)}</option>`).join('')}</select>`:kind==='boolean'?`<select class="field" name="${key}"><option value="true" ${value?'selected':''}>예</option><option value="false" ${!value?'selected':''}>아니오</option></select>`:kind==='long'?`<textarea class="field" name="${key}">${h(value)}</textarea>`:`<input class="field" name="${key}" type="${kind==='number'||kind==='nullable'?'number':'text'}" ${kind==='number'||kind==='nullable'?'min="0" step="1"':''} value="${h(value??'')}">`;return `<div class="formgroup ${kind==='long'?'wide':''}"><label for="_${key}">${h(label)}</label>${widget}</div>`}).join('');document.getElementById('modalRoot').innerHTML=`<div class="dialogoverlay" id="overlay"><div class="dialog" role="dialog" aria-modal="true"><div class="rowhead"><h2>${item?'항목 편집':'새 항목 추가'}</h2><button class="btn sm" data-action="close-modal">닫기 ✕</button></div><div class="hint">${h(type)} · 수정한 정보는 이 브라우저에 저장됩니다. '확인됨' 표시는 수동 증빙이 있을 때만 선택하세요.</div><form id="editForm" data-type="${type}" data-original="${h(id||'')}"><div class="formgrid">${f}</div><div class="dialogfooter">${item?`<button type="button" class="btn danger" data-delete="${type}" data-id="${encodeURIComponent(id)}">항목 삭제</button>`:''}<button type="button" class="btn" data-action="close-modal">취소</button><button type="button" class="btn primary" data-action="save-form">저장</button></div></form></div></div>`;document.getElementById('modalRoot').querySelector('input')?.focus()}
+function closeModal(){document.getElementById('modalRoot').innerHTML=''}
+function saveForm(form){const type=form.dataset.type,original=form.dataset.original;let obj={};for(const [key,,kind] of fields[type]){let raw=form.elements[key]?.value??'';obj[key]=kind==='boolean'?raw==='true':kind==='number'?Number(raw):kind==='nullable'?(raw===''?null:Number(raw)):raw.trim()}if(!obj.id){alert('ID를 입력하세요.');return}if(obj.id!==original&&state[type].some(x=>x.id===obj.id)){alert('중복된 ID입니다.');return}if(type==='sessions'){if(obj.targetGames<0||obj.completedGames<0||obj.completedGames>obj.targetGames){alert('목표/완료 경기 수를 확인하세요.');return}if([obj.wins,obj.losses,obj.draws].some(n=>n!==null&&n<0)){alert('승패 수를 확인하세요.');return}if(obj.completedGames===0&&(obj.wins!==null||obj.losses!==null||obj.draws!==null)){if(!confirm('완료 0경기에 승패 수치를 입력했습니다. 저장할까요?'))return}}
+if(type==='tests'&&(obj.passed<0||obj.total<0||obj.passed>obj.total)){alert('테스트 통과/전체 수를 확인하세요.');return}
+if(type==='issues'&&obj.status==='해결됨'&&!obj.resolution){alert('해결된 결함에는 반드시 해결 근거가 필요합니다. 재검증 상태는 별도로 기록하세요.');return}
+if(type==='protection'&&obj.state==='확인됨'&&(!obj.hashBefore||!obj.hashAfter||obj.hashBefore!==obj.hashAfter||obj.backup!=='확인됨')){alert('원본 보호 확인에는 일치하는 변경 전후 SHA256과 확인된 백업 상태가 필요합니다.');return}
+let idx=state[type].findIndex(x=>x.id===original);if(idx>=0)state[type][idx]=obj;else state[type].push(obj);save();closeModal();render()}
+function download(name,content,mime){const blob=new Blob([content],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
+function exportJson(){download('PSH_AI_ARENA_검증관제실_백업_'+seoulDay()+'.json',JSON.stringify({app:'PSH AI ARENA 검증 관제실',schemaVersion:SCHEMA,exportedAt:new Date().toISOString(),data:state},null,2),'application/json;charset=utf-8')}
+function exportCsv(type){const rows=state[type]||[],columns=fields[type].map(x=>x[0]);let out=[columns,...rows.map(x=>columns.map(k=>x[k]??''))].map(row=>row.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');download('PSH_AI_ARENA_'+({sessions:'세션',issues:'결함'}[type]||type)+'_'+seoulDay()+'.csv','\ufeff'+out,'text/csv;charset=utf-8')}
+async function importJson(file){if(!file)return;try{let obj=JSON.parse(await file.text());if(obj.app!=='PSH AI ARENA 검증 관제실'||obj.schemaVersion!==SCHEMA||!isValid(obj.data))throw Error('지원하는 PSH AI ARENA 백업 형식이 아닙니다.');if(!confirm('기존 브라우저 데이터 전체를 덮어씁니다. 먼저 JSON 백업을 권장합니다. 계속할까요?'))return;state=clone(obj.data);state.artifacts??=[];save();query='';statusFilter='전체';render();alert('백업 데이터를 가져왔습니다.')}catch(e){alert('가져오기 실패: '+e.message)}finally{document.getElementById('filePicker').value=''}}
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.tab){tab=t.dataset.tab;query='';statusFilter='전체';render();return}if(t.dataset.edit){edit(t.dataset.edit,decodeURIComponent(t.dataset.id));return}if(t.dataset.add){edit(t.dataset.add,null);return}if(t.dataset.delete){let type=t.dataset.delete,id=decodeURIComponent(t.dataset.id);if(confirm(id+' 항목을 삭제하시겠습니까? 삭제는 되돌릴 수 없습니다.')){state[type]=state[type].filter(x=>x.id!==id);save();closeModal();render()}return}if(t.dataset.saveDecision){let key=t.dataset.saveDecision,select=[...document.querySelectorAll('[data-decision]')].find(x=>x.dataset.decision===key),note=[...document.querySelectorAll('[data-decision-note]')].find(x=>x.dataset.decisionNote===key);state.weeklyDecisions[key]={status:select?.value||'미결',notes:note?.value||'',updatedAt:new Date().toISOString()};save();render();return}switch(t.dataset.action){case 'save-form':saveForm(document.getElementById('editForm'));break;case 'close-modal':closeModal();break;case 'export-json':exportJson();break;case 'import-json':document.getElementById('filePicker').click();break;case 'export-sessions':exportCsv('sessions');break;case 'export-issues':exportCsv('issues');break;case 'reset':if(confirm('모든 입력을 지우고 최초 데이터로 복원할까요?')){state=clone(seed);state.artifacts=[];save();render()}break}});
+document.addEventListener('submit',e=>{if(e.target.id==='editForm'){e.preventDefault();saveForm(e.target)}});
+document.addEventListener('input',e=>{if(e.target.id==='searchInput'){query=e.target.value;const caret=e.target.selectionStart;render();let el=document.getElementById('searchInput');el?.focus();el?.setSelectionRange(caret,caret)}});
+document.addEventListener('change',e=>{if(e.target.id==='statusFilter'){statusFilter=e.target.value;render()}});
+document.getElementById('filePicker').addEventListener('change',e=>importJson(e.target.files?.[0]));
+document.getElementById('modalRoot').addEventListener('click',e=>{if(e.target.id==='overlay')closeModal()});
+// PSH AI ARENA 관제실 V1.1 — 오프라인 증거 수집·MSG16 로그 진단.
+// 주의: 입력 내용은 증거 후보이며 PSH 엔진 실실행/자동 승인 결과가 아니다.
+const DIAG_MAX_FILE=4*1024*1024;
+const DIAG_MAX_BATCH=18*1024*1024;
+const DIAG_MAX_ARCHIVE_ITEMS=55;
+const DIAG_MAX_PREVIEW=28;
+let pendingEvidence=[], diagnosticInfo='';
+function ensureEvidence(){if(!Array.isArray(state.artifacts))state.artifacts=[];return state.artifacts}
+function sourceLabel(x){return x==='zip'?'ZIP 안의 파일':x.toUpperCase()}
+function escNewlines(t){return String(t??'').replace(/[\u0000-\u001f]/g,c=>c==='\n'?' ↵ ':c==='\t'?' ⇥ ':' ')}
+function byteSize(n){return n>1024*1024?(n/1048576).toFixed(2)+'MB':(n/1024).toFixed(1)+'KB'}
+function cleanId(x){return String(x||'').replace(/[^a-zA-Z0-9_-]/g,'').slice(0,80)}
+// WebCrypto를 사용할 수 없는 제한된 로컬 페이지에서도 실제 SHA-256 계산.
+function pureSha256(data){
+ const K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+ const H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],n=data.length;
+ const buffer=new Uint8Array((n+9+63)&~63);buffer.set(data);buffer[n]=0x80;const bits=n*8,idx=buffer.length-8;buffer[idx+4]=(bits/0x1000000)&255;buffer[idx+5]=(bits>>>16)&255;buffer[idx+6]=(bits>>>8)&255;buffer[idx+7]=bits&255;
+ const w=new Uint32Array(64);const rot=(v,n)=>(v>>>n)|(v<<(32-n));
+ for(let pos=0;pos<buffer.length;pos+=64){
+  for(let t=0;t<16;t++){let i=pos+t*4;w[t]=(buffer[i]<<24)|(buffer[i+1]<<16)|(buffer[i+2]<<8)|buffer[i+3]}
+  for(let t=16;t<64;t++){const s0=rot(w[t-15],7)^rot(w[t-15],18)^(w[t-15]>>>3),s1=rot(w[t-2],17)^rot(w[t-2],19)^(w[t-2]>>>10);w[t]=(w[t-16]+s0+w[t-7]+s1)>>>0}
+  let [a,b,c,d,e,f,g,h]=H;
+  for(let t=0;t<64;t++){const s1=rot(e,6)^rot(e,11)^rot(e,25),ch=(e&f)^(~e&g),temp1=(h+s1+ch+K[t]+w[t])>>>0,s0=rot(a,2)^rot(a,13)^rot(a,22),maj=(a&b)^(a&c)^(b&c),temp2=(s0+maj)>>>0;h=g;g=f;f=e;e=(d+temp1)>>>0;d=c;c=b;b=a;a=(temp1+temp2)>>>0}
+  [a,b,c,d,e,f,g,h].forEach((v,i)=>H[i]=(H[i]+v)>>>0);
+ }
+ return H.map(x=>x.toString(16).padStart(8,'0')).join('');
+}
+async function shaHex(bytes){if(crypto?.subtle)try{const buff=await crypto.subtle.digest('SHA-256',bytes);return [...new Uint8Array(buff)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){}return pureSha256(bytes)}
+function normalizedKey(s){return s.toLowerCase().replace(/[^a-z0-9]/g,'')}
+function pickKey(obj,alts){if(!obj||typeof obj!=='object'||Array.isArray(obj))return undefined;const keys=Object.keys(obj),want=new Set(alts.map(normalizedKey));const k=keys.find(x=>want.has(normalizedKey(x)));return k===undefined?undefined:obj[k]}
+function intIfKnown(v){if(v===null||v===undefined||v==='')return null;let n=typeof v==='number'?v:Number(String(v).trim());return Number.isSafeInteger(n)&&n>=0?n:null}
+function parseCsv(t){const rows=[];let cur='',row=[],quoted=false;for(let i=0;i<t.length;i++){const c=t[i];if(c==='"'){if(quoted&&t[i+1]==='"'){cur+='"';i++}else quoted=!quoted}else if(c===','&&!quoted){row.push(cur);cur=''}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&t[i+1]==='\n')i++;row.push(cur);if(row.some(v=>v.trim()!==''))rows.push(row);row=[];cur='';if(rows.length>1500)break}else cur+=c}if(cur||row.length){row.push(cur);rows.push(row)}if(!rows.length)return[];const headers=rows[0].map((x,i)=>x.replace(/^\ufeff/,'').trim()||'col'+i);return rows.slice(1).map(r=>Object.fromEntries(headers.map((k,i)=>[k,r[i]??''])))}
+function sessionCandidate(data){let pool=[];if(Array.isArray(data)){if(data.length===1)pool=[data[0]];else return{candidate:null,reason:`${data.length}개 행/레코드: 어느 세션에 해당하는지 자동 선택하지 않음`}}else if(data&&typeof data==='object'){
+  pool=[data, data.session, data.summary, data.metrics, data.result, data.data?.session, data.data?.summary];
+  if(Array.isArray(data.sessions))if(data.sessions.length===1)pool.push(data.sessions[0]);else return{candidate:null,reason:`sessions ${data.sessions.length}개: 하나의 세션으로 자동 병합하지 않음`};
+  if(Array.isArray(data.rows))if(data.rows.length===1)pool.push(data.rows[0]);
+}
+for(const obj of pool){if(!obj||typeof obj!=='object'||Array.isArray(obj))continue;
+ const target=intIfKnown(pickKey(obj,['target_games','targetGames','games_target','requested_games','totalGames','goal_games']));
+ const done=intIfKnown(pickKey(obj,['completed_games','completedGames','games_completed','games_done','finished_games']));
+ const wins=intIfKnown(pickKey(obj,['wins','win_count'])),losses=intIfKnown(pickKey(obj,['losses','loss_count'])),draws=intIfKnown(pickKey(obj,['draws','draw_count']));
+ const rawId=pickKey(obj,['session_id','sessionId']);
+ const deck=pickKey(obj,['deck_name','deckName','deck']);
+ const hasStats=[target,done,wins,losses,draws].some(n=>n!==null);
+ if(!hasStats&&!rawId)continue;
+ const candidate={sessionId:typeof rawId==='string'?rawId.trim():null,deck:typeof deck==='string'?deck.trim():null,targetGames:target,completedGames:done,wins,losses,draws};
+ const knownResults=[wins,losses,draws].filter(x=>x!==null).reduce((a,b)=>a+b,0);
+ const hasConflicts=(target!==null&&done!==null&&done>target)||(done!==null&&knownResults>done)||(target!==null&&knownResults>target);
+ return{candidate,reason:hasConflicts?'서로 모순된 경기 수 발견: 자동 반영 금지':'파일의 명시적 필드에서만 후보 수치 추출',conflict:hasConflicts};
+}return{candidate:null,reason:'인식 가능한 세션 수치 필드가 없음 (스키마 미확인)'};}
+function traceLines(text,data,kind){let lines=text.split(/\r?\n/).slice(0,25000);if(kind==='json'){
+  const out=[];let scanned=0;function walk(x,d){if(scanned>=1200||d>5||!x||typeof x!=='object')return;
+    if(Array.isArray(x)){for(let i=0;i<Math.min(x.length,400);i++)walk(x[i],d+1);return}
+    scanned++;
+    const nestedKeys=['events','logs','messages','traces','records','history','data','result','games'];
+    const flat=Object.fromEntries(Object.entries(x).filter(([k,v])=>v===null||typeof v!=='object'));
+    if(Object.keys(flat).length && (d>0||Object.keys(flat).some(k=>/msg|prompt|watchdog|response|event|trace|core|error/i.test(k))))out.push(JSON.stringify(flat).slice(0,2200));
+    for(const k of nestedKeys)if(x[k])walk(x[k],d+1);
+  }walk(data,0);if(out.length)lines=out.slice(0,3000);
+}
+return lines;
+}
+function analyzeTrace(lines){const patterns={
+  msg:/\bMSG\s*16\b|\bMSG16\b|\bselect[_\s-]?chain\b/i,
+  pass:/(?:\b(?:response|respond|selected_index|response_code)\b\s*[=:]\s*-1\b|-1\s*(?:응답|response)|\bpass[_\s-]?chain\b)/i,
+  result:/\bcore_response_result\b|\bOCG_DuelProcess\b.{0,30}\b(?:returned|return|exit|종료|복귀)\b/i,
+  watchdog:/\bwatchdog\b|\btimeout\b|\btime[_\s-]?out\b|\bdeadlock\b|\bblocked\b|\babort(?:ed)?\b|교착|시간 초과/i,
+  core:/\bOCG_DuelProcess\b/i
+};
+const events=[];let lastPrompt=null,seenPromptAt=-1,seenMsgAt=-1,prompts=new Set();let counts={msg:0,pass:0,result:0,watchdog:0,core:0},lastMsg=null,lastResult=null,lastWd=null;
+for(let i=0;i<lines.length;i++){
+ let line=String(lines[i]);const m=line.match(/["']?prompt(?:[_\s-]*(?:no|number|id))?["']?\s*[:=#\s-]*([0-9]{1,8})\b/i);
+ if(m){lastPrompt=m[1];seenPromptAt=i;prompts.add(m[1])}
+ const matches=Object.entries(patterns).filter(([kind,rx])=>rx.test(line)).map(([kind])=>kind);
+ for(const kind of matches){counts[kind]++;if(kind==='msg')seenMsgAt=i;if(kind==='result')lastResult=i;if(kind==='watchdog')lastWd=i}
+ if(!matches.length&&!m)continue;
+ const nearPrompt=(i-seenPromptAt<=25)?lastPrompt:null;
+ if(matches.includes('msg'))lastMsg={line:i+1,prompt:nearPrompt};
+ if(events.length<250)events.push({line:i+1,prompt:nearPrompt,types:matches,preview:escNewlines(line).slice(0,500)});
+}
+let conclusion='특이 패턴 미관측',confidence='미확인';
+if(counts.msg&&counts.watchdog){conclusion=lastResult!==null&&lastMsg&&lastResult>lastMsg.line-1?'MSG16 및 watchdog 발견 (중간 반환 흔적도 있음)':'MSG16 이후 교착 정황 · watchdog 관측';confidence='자동 추출 · 미승인';}
+else if(counts.msg&&!counts.result){conclusion='MSG16 관측 · 반환 기록 미관측 (교착 확정 불가)';confidence='자동 추출 · 미승인'}
+else if(counts.msg){conclusion='MSG16 관측 · 반환 이벤트 포함';confidence='자동 추출 · 미승인'}
+else if(counts.watchdog){conclusion='watchdog/abort 신호 관측 (MSG16 연관 미확정)';confidence='자동 추출 · 미승인'}
+const lastMsgIndex=lastMsg?lastMsg.line-1:-1;
+const laterResult=lastMsgIndex>=0&&events.some(e=>e.line-1>lastMsgIndex&&e.types.includes('result'));
+const laterWd=lastMsgIndex>=0&&events.some(e=>e.line-1>lastMsgIndex&&e.types.includes('watchdog'));
+return {counts,lastMsg,laterResult,laterWd,prompts:[...prompts].slice(0,30),events:events.slice(-DIAG_MAX_PREVIEW),conclusion,confidence,scannedLines:lines.length};}
+function diagKind(name){return (name.split('.').pop()||'').toLowerCase()}
+async function interpretOne({name,bytes,source}){
+ if(bytes.byteLength>DIAG_MAX_FILE)throw new Error(name+': 단일 파일 4MB 초과');
+ const ext=diagKind(name);if(!['json','jsonl','csv','log','txt'].includes(ext))throw new Error(name+': 지원하지 않는 로그 형식');
+ const text=new TextDecoder('utf-8').decode(bytes);let data=null,read='텍스트',parseWarning='';
+ try{
+   if(ext==='json'){data=JSON.parse(text.replace(/^\ufeff/,''));read='JSON';if(data&&(data.app==='PSH AI ARENA 검증 관제실'||data.schemaVersion&&data.recordDate&&data.weeklyDecisions))throw new Error('관제실 백업 JSON은 상단 JSON 가져오기를 사용하세요.');}
+   else if(ext==='jsonl'){const records=text.split(/\r?\n/).filter(x=>x.trim());const objects=[];let invalid=0;for(let line of records.slice(0,2500)){try{objects.push(JSON.parse(line))}catch(e){invalid++}}data=objects;read=`JSONL ${objects.length}개 레코드`;if(invalid)parseWarning=`JSONL ${invalid}행 구문 오류`}
+   else if(ext==='csv'){data=parseCsv(text);read=`CSV ${data.length}개 행`}
+ }catch(e){if(String(e.message).includes('관제실 백업'))throw e;parseWarning=String(e.message).slice(0,180);data=null}
+ const session=sessionCandidate(data),trace=analyzeTrace(traceLines(text,data,ext));
+ const hash=await shaHex(bytes);
+ return {id:'EVD-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),name,source,kind:ext.toUpperCase(),bytes:bytes.byteLength,sha256:hash,importedAt:new Date().toISOString(),parseMode:read,parseWarning,sessionCandidate:session.candidate,sessionConflict:!!session.conflict,sessionReason:session.reason,trace,linkedSession:'',reviewStatus:'미확인',reviewNotes:'',rawPreview:escNewlines(text.slice(0,1600)),origin:'사용자가 가져온 로컬 파일 · 관제실에서 엔진 미실행'};
+}
+function u16(view,pos){return view.getUint16(pos,true)}
+function u32(view,pos){return view.getUint32(pos,true)}
+function crc32(bytes){let c=-1;for(const b of bytes){c^=b;for(let j=0;j<8;j++)c=(c>>>1)^((c&1)?0xedb88320:0)}return (c^(-1))>>>0}
+async function unpackZip(name,buffer,allowed=['json','jsonl','csv','log','txt']){const d=new DataView(buffer),l=d.byteLength;let end=-1;for(let i=l-22;i>=Math.max(0,l-65557);i--){if(u32(d,i)===0x06054b50){end=i;break}}if(end<0)throw new Error(name+': ZIP 중앙 디렉터리를 찾을 수 없음');
+ const count=u16(d,end+10),cdSize=u32(d,end+12),off=u32(d,end+16);if(count>DIAG_MAX_ARCHIVE_ITEMS)throw new Error(name+': ZIP 안에 파일이 너무 많음 (최대 55개)');if(off+cdSize>l)throw new Error(name+': 잘못된 ZIP 디렉터리');
+ const outputs=[],errors=[];let pos=off,total=0;
+ for(let n=0;n<count;n++){
+  if(pos+46>l||u32(d,pos)!==0x02014b50)throw new Error('ZIP 엔트리 헤더 손상');
+  const method=u16(d,pos+10),crc=u32(d,pos+16),comp=u32(d,pos+20),size=u32(d,pos+24),nameLength=u16(d,pos+28),extra=u16(d,pos+30),comment=u16(d,pos+32),local=u32(d,pos+42);
+  if(pos+46+nameLength+extra+comment>l)throw new Error('ZIP 경로 헤더 손상');
+  const path=new TextDecoder().decode(new Uint8Array(buffer,pos+46,nameLength));pos+=46+nameLength+extra+comment;
+  if(path.endsWith('/')||!allowed.includes(diagKind(path)))continue;
+  if(path.includes('../')||path.startsWith('/')||path.includes('\\')){errors.push(path+': 위험한 경로 제외');continue}
+  if(size>DIAG_MAX_FILE||total+size>DIAG_MAX_BATCH){errors.push(path+': 용량 상한 제외');continue}
+  if(local+30>l||u32(d,local)!==0x04034b50){errors.push(path+': 로컬 헤더 손상');continue}
+  const dataOff=local+30+u16(d,local+26)+u16(d,local+28);if(dataOff+comp>l){errors.push(path+': 압축 데이터 손상');continue}
+  let raw;const compressed=new Uint8Array(buffer,dataOff,comp);
+  try{if(method===0)raw=new Uint8Array(compressed);else if(method===8){if(typeof DecompressionStream==='undefined')throw new Error('브라우저 압축 해제 미지원');const decomp=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('deflate-raw'));const reader=decomp.getReader(),parts=[];let got=0;while(true){const {value,done}=await reader.read();if(done)break;got+=value.length;if(got>DIAG_MAX_FILE||got>size){await reader.cancel();throw new Error('압축 해제 크기가 제한 또는 ZIP 헤더 초과')}parts.push(value)}raw=new Uint8Array(got);let p=0;for(const chunk of parts){raw.set(chunk,p);p+=chunk.length}}else throw new Error('미지원 압축 방식 '+method);
+   if(raw.length!==size||crc32(raw)!==crc)throw new Error('파일 길이 또는 CRC32 불일치');
+   outputs.push({name:path,bytes:raw,source:name+' :: ZIP 항목'});total+=raw.length;
+  }catch(e){errors.push(path+': '+e.message)}
+ }
+ return {outputs,errors};
+}
+async function inspectUploads(fileList){const files=[...fileList];if(!files.length)return;pendingEvidence=[];
+ const errors=[],output=[];let total=0;
+ for(const file of files){
+   if(total+file.size>DIAG_MAX_BATCH){errors.push(file.name+': 전체 업로드 18MB 제한');continue}
+   total+=file.size;
+   try{if(diagKind(file.name)==='zip'){const unpacked=await unpackZip(file.name,await file.arrayBuffer());output.push(...unpacked.outputs);errors.push(...unpacked.errors)}
+   else{if(file.size>DIAG_MAX_FILE)throw new Error('4MB 초과');output.push({name:file.name,bytes:new Uint8Array(await file.arrayBuffer()),source:'개별 파일'})}}
+   catch(e){errors.push(file.name+': '+e.message)}
+ }
+ for(const inp of output){if(pendingEvidence.length>=50){errors.push('최대 50개까지만 한 번에 분석 가능');break}try{pendingEvidence.push(await interpretOne(inp))}catch(e){errors.push(inp.name+': '+e.message)}}
+ diagnosticInfo=errors.join(' / ');
+ tab='diagnostics';render();
+ if(pendingEvidence.length)showImportPreview();else alert(diagnosticInfo||'분석 가능한 파일이 없습니다.');
+}
+function diagPill(x){const css=x==='미확인'?'neutral':x.includes('미승인')?'warn':x.includes('교착')?'bad':'info';return `<span class="badge ${css}">${h(x)}</span>`}
+function diagSummary(t){return `<div class="pillrow"><span class="badge neutral">MSG16 ${t.counts.msg}</span><span class="badge neutral">-1/pass ${t.counts.pass}</span><span class="badge neutral">코어 반환 ${t.counts.result}</span><span class="badge ${t.counts.watchdog?'bad':'neutral'}">watchdog ${t.counts.watchdog}</span></div>`}
+function matchSession(imported){const id=imported.sessionCandidate?.sessionId;return id&&state.sessions.some(x=>x.id===id)?id:''}
+function diagPreviewCards(items){return items.map((a,i)=>{const candidate=a.sessionCandidate;const linked=matchSession(a);return `<article class="diagitem"><div class="rowhead"><strong class="monospace">${h(a.name)}</strong>${diagPill(a.trace.conclusion)}</div><div class="smallnote">${h(a.source)} · ${h(a.parseMode)} · ${byteSize(a.bytes)} · SHA256 ${a.sha256?h(a.sha256.slice(0,16))+'…':'미확인'}</div><div class="smallnote" style="margin:8px 0">${h(a.sessionReason)} ${a.parseWarning?' · 경고: '+h(a.parseWarning):''}</div>${diagSummary(a.trace)}<div class="smallnote" style="margin:10px 0">프롬프트 관측: ${a.trace.prompts.length?h(a.trace.prompts.join(', ')):'미확인'} · 마지막 MSG16 ${a.trace.lastMsg?'#'+a.trace.lastMsg.line:'미확인'} · MSG16 이후 core 반환: ${a.trace.laterResult?'관측됨':'미관측'} · 분석은 원인/완주를 확정하지 않음</div>
+<div class="diagoptions"><div><label class="smallnote">기존 세션 연결 (명시적으로 선택)</label><select data-ev-session="${i}" class="field"><option value="">연결 안 함</option>${state.sessions.map(s=>`<option value="${h(s.id)}" ${linked===s.id?'selected':''}>${h(s.id)}</option>`).join('')}</select></div>
+<div><label class="smallnote">파일에서 추출한 수치</label><div class="smallnote" style="padding:10px;border:1px solid #30465a;border-radius:8px">${candidate?`목표 ${val(candidate.targetGames)} / 완료 ${val(candidate.completedGames)} / 승 ${val(candidate.wins)} 패 ${val(candidate.losses)} 무 ${val(candidate.draws)}`:'인식된 수치 없음'}</div></div></div>
+<label class="smallnote diagtoggle"><input type="checkbox" data-ev-update="${i}" ${candidate&&!a.sessionConflict?'':'disabled'}> 세션 수치에 반영 (명시적 동의 · 검증 상태 미확인 유지)</label>
+<label class="smallnote diagtoggle"><input type="checkbox" data-ev-event="${i}"> 분석 이벤트를 '미확인'으로 신규 등록</label>
+<details><summary class="smallnote">추출 타임라인 ${a.trace.events.length}개 확인</summary><div class="diagtrace">${a.trace.events.map(e=>`<div><span class="muted">#${e.line} · ${e.prompt?'P'+h(e.prompt):'P?'}</span> ${e.types.map(t=>`<span class="badge neutral">${h(t)}</span>`).join('')} <code>${h(e.preview)}</code></div>`).join('')||'메시지 패턴 미관측'}</div></details></article>`}).join('')}
+function showImportPreview(){let root=document.getElementById('modalRoot');root.innerHTML=`<div class="dialogoverlay" id="overlay"><div class="dialog diaggap" role="dialog" aria-modal="true"><div class="rowhead"><h2>로그 분석 미리보기 · ${pendingEvidence.length}개</h2><button class="btn sm" data-action="close-diagnostic">닫기 ✕</button></div><p class="hint">파일에서 관측된 문자열과 명시적 필드만 표시합니다. 로그에 없다고 반환/완주가 없었다고 단정할 수 없습니다. 세션 수치 반영과 이벤트 생성은 별도로 선택해야 합니다.</p>${diagnosticInfo?`<div class="diagalert">일부 파일 제외: ${h(diagnosticInfo)}</div>`:''}<div class="diagscroll">${diagPreviewCards(pendingEvidence)}</div><div class="dialogfooter"><button class="btn" data-action="close-diagnostic">취소</button><button class="btn primary" data-action="confirm-diagnostic">증거 기록 저장</button></div></div></div>`}
+function saveDiagnostic(){let root=document.getElementById('modalRoot');const old=ensureEvidence();let added=0,duplicates=0,updated=0,evadded=0;
+for(let i=0;i<pendingEvidence.length;i++){
+ const a=pendingEvidence[i];if(a.sha256&&old.some(o=>o.sha256===a.sha256)){duplicates++;continue}
+ const chosen=root.querySelector(`[data-ev-session="${i}"]`)?.value||'';
+ const update=root.querySelector(`[data-ev-update="${i}"]`)?.checked;
+ const addEvent=root.querySelector(`[data-ev-event="${i}"]`)?.checked;
+ const s=chosen&&state.sessions.find(x=>x.id===chosen);
+ if(update&&s&&a.sessionCandidate&&!a.sessionConflict){let c=a.sessionCandidate;let proposed={targetGames:c.targetGames??s.targetGames,completedGames:c.completedGames??s.completedGames,wins:c.wins??s.wins,losses:c.losses??s.losses,draws:c.draws??s.draws};
+  const knownResults=[proposed.wins,proposed.losses,proposed.draws].filter(x=>x!==null).reduce((sum,n)=>sum+n,0);
+  if(proposed.targetGames!==null&&proposed.completedGames!==null&&proposed.completedGames<=proposed.targetGames&&knownResults<=proposed.completedGames&&[proposed.wins,proposed.losses,proposed.draws].every(x=>x===null||x>=0)){
+  Object.assign(s,proposed);s.resultVerified='미확인';updated++;
+  }else a.reviewNotes='수치의 내부 모순으로 세션 반영하지 않음';
+ }
+ a.linkedSession=chosen;a.reviewStatus='미확인';
+ if(s){const ref='[V1.1 미승인 로그] '+a.name+' / SHA256 '+(a.sha256||'미확인');if(!s.logRef.includes(ref))s.logRef=[s.logRef,ref].filter(Boolean).join(' | ')}
+ // 데이터 최소화: 전체 파일 본문은 저장하지 않고 발췌·해시만 localStorage에 보관.
+ old.push(a);added++;
+ if(addEvent){const prompt=a.trace.lastMsg?.prompt||'';state.events.push({id:newid('events'),date:seoulDay(),version:'미확인',sessionId:chosen||'미확인',title:'로그 자동 분석: '+a.name,status:'미확인',prompt,result:a.trace.conclusion,evidence:'자동 추출 · 미승인 · SHA256 '+(a.sha256||'미확인')+' · '+a.source+'. MSG16 '+a.trace.counts.msg+' / watchdog '+a.trace.counts.watchdog});evadded++}
+}
+pendingEvidence=[];closeModal();save();render();alert(`증거 ${added}개 저장 · 중복 ${duplicates}개 제외 · 세션 수치 반영 ${updated}개 · 미확인 이벤트 ${evadded}개 생성. 실제 검증 승인은 자동 변경되지 않습니다.`);
+}
+function evidenceDetails(id){const a=ensureEvidence().find(x=>x.id===id);if(!a)return;document.getElementById('modalRoot').innerHTML=`<div class="dialogoverlay" id="overlay"><div class="dialog" role="dialog" aria-modal="true"><div class="rowhead"><h2>증거 상세</h2><button class="btn sm" data-action="close-modal">닫기 ✕</button></div><div class="smallnote monospace">${h(a.name)}<br>SHA256: ${a.sha256?h(a.sha256):'미확인'}<br>${h(a.origin)}<br>출처: ${h(a.source)}</div><div class="linecard" style="margin:15px 0">${diagPill(a.trace.conclusion)}${diagSummary(a.trace)}<p class="panel-note">분석 결과는 가설 및 로그 속성 표시이며 교착의 근본 원인과 경기 완주를 판정하지 않습니다.</p></div><label class="smallnote">증거 검토 상태</label><select id="evidenceReview" class="field" style="width:100%;margin:6px 0 12px"><option ${a.reviewStatus==='미확인'?'selected':''}>미확인</option><option ${a.reviewStatus==='파일 내용 검토'?'selected':''}>파일 내용 검토</option></select><label class="smallnote">검토 메모</label><textarea id="evidenceNote" class="field" style="width:100%">${h(a.reviewNotes)}</textarea><details style="margin-top:16px"><summary class="smallnote">원문 발췌 (최대 1600자)</summary><pre class="diagraw">${h(a.rawPreview)}</pre></details><div class="dialogfooter"><button class="btn danger" data-evidence-delete="${h(a.id)}">증거 삭제</button><button class="btn" data-action="close-modal">취소</button><button class="btn primary" data-evidence-save="${h(a.id)}">메모 저장</button></div></div></div>`}
+function diagnostics(){const arr=ensureEvidence().slice().reverse();const matches=arr.filter(x=>x.trace?.counts?.msg>0&&x.trace?.counts?.watchdog>0);return `${head('로그 · MSG16 교착 진단','V2.4 / V2.4.1 실전 증거를 파일 단위로 수집합니다. 직접 실행·실시간 동기화는 하지 않으며, 추출 결과는 승인 전까지 미확인입니다.')}<div class="grid diagstats"><div class="panel kpi"><div class="lab">가져온 증거 파일</div><div class="num teal">${arr.length}</div><div class="foot">원문 전체가 아닌 SHA256·요약·발췌만 저장</div></div><div class="panel kpi"><div class="lab">MSG16+watchdog 관측</div><div class="num orange">${matches.length}</div><div class="foot">자동 분석 · 실제 원인과 재현 승인 미확정</div></div><div class="panel kpi"><div class="lab">검토 미확인</div><div class="num">${arr.filter(x=>x.reviewStatus==='미확인').length}</div><div class="foot">기존 회귀 테스트 실적과 구분</div></div></div>
+<section class="panel full"><div class="rowhead"><h2>세션·로그 파일 가져오기</h2><div class="minirow"><button class="btn primary" data-action="select-logs">+ 로그 파일 선택</button><button class="btn sm" data-action="open-log-usage">지원 형식·검증 원칙</button></div></div><div class="diagdrop" id="diagDrop" tabindex="0" role="button">JSON · JSONL · CSV · TXT · LOG · ZIP 파일을 여기에 끌어놓거나 위 버튼으로 선택<br><span class="smallnote">최대 18MB/배치 · 로그 4MB/개 · ZIP 경로 및 CRC32 검사 · 브라우저에서만 분석</span></div><p class="panel-note">실제 PSH AI ARENA 내보내기 스키마가 아직 확보되지 않았습니다. 세션 ID·목표·완료·승패는 파일에 명시된 필드만 후보로 인식하며 다중 행은 자동 합치지 않습니다. 로그인·원격 서버 연결·EDOPro 접근 없음.</p>${diagnosticInfo?`<p class="diagalert">마지막 업로드 경고: ${h(diagnosticInfo)}</p>`:''}</section>
+<section class="panel full"><div class="rowhead"><h2>증거 아카이브 <span class="muted">${arr.length}개</span></h2>${tag('자동 승인 없음')}</div>${table(['파일·출처','패턴','관측 프롬프트','연결 세션','상태','검토'],arr.map(a=>`<tr><td><strong class="monospace">${h(a.name)}</strong><div class="small">${h(a.kind)} · ${byteSize(a.bytes)} · ${h(a.importedAt.slice(0,10))}<br>SHA256 ${a.sha256?h(a.sha256.slice(0,16))+'…':'미확인'}</div></td><td>${diagPill(a.trace.conclusion)}<div class="small">MSG16 ${a.trace.counts.msg} / watchdog ${a.trace.counts.watchdog} / core 반환 ${a.trace.counts.result}</div></td><td>${a.trace.prompts.length?h(a.trace.prompts.join(', ')):'미확인'}</td><td class="monospace">${a.linkedSession?h(a.linkedSession):'미연결'}</td><td>${tag(a.reviewStatus)}</td><td><button class="textbtn" data-evidence-open="${h(a.id)}">상세 · 메모</button></td></tr>`))}<p class="panel-note">원문 파일의 실제 존재 확인과 원본 해시/백업 보호는 서로 다른 의미입니다. 수집된 증빙은 브라우저에만 저장됩니다.</p></section>
+${panel('교착 진단 기준',`<div class="cardlist"><div class="linecard"><strong>1. MSG16 / pass(-1) 응답</strong><div class="details">형식적 토큰을 분석해 발생 순서와 인접 프롬프트를 추출합니다. 데이터가 부족하면 프롬프트는 미확인으로 표시합니다.</div></div><div class="linecard"><strong>2. core_response_result / watchdog</strong><div class="details">반환 로그의 존재·부재와 watchdog 메시지를 각각 기록합니다. 특정 텍스트가 없다는 사실만으로 엔진 교착을 확정하지 않습니다.</div></div><div class="linecard"><strong>3. ISSUE-001 해결은 별도 절차</strong><div class="details">로그 업로드 후에도 결함은 자동 해결 처리하지 않습니다. 원인 수정 근거와 EDOPro 실전 재검증을 별도 승인해야 합니다.</div></div></div>`)}`}
+function describeLogUsage(){alert('지원 형식: JSON, JSONL, CSV, TXT, LOG, ZIP(브라우저가 deflate-raw를 지원할 때 압축 해제). ZIP 내부의 동일 형식만 분석합니다.\n\n파일 전체는 서버로 업로드하지 않으며, 증거 메타데이터·SHA256·발췌만 현재 브라우저에 저장합니다.\n\n가져오기 결과는 수동 검토 전까지 미확인입니다. 기록에 없는 값은 추정하지 않습니다.');}
+document.addEventListener('click', e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.action==='select-logs'){document.getElementById('logPicker').click()}
+ else if(t.dataset.action==='open-log-usage')describeLogUsage();
+ else if(t.dataset.action==='close-diagnostic'){pendingEvidence=[];closeModal()}
+ else if(t.dataset.action==='confirm-diagnostic')saveDiagnostic();
+ else if(t.dataset.evidenceOpen)evidenceDetails(t.dataset.evidenceOpen);
+ else if(t.dataset.evidenceSave){const a=ensureEvidence().find(x=>x.id===t.dataset.evidenceSave);if(a){a.reviewStatus=document.getElementById('evidenceReview').value;a.reviewNotes=document.getElementById('evidenceNote').value;save();closeModal();render()}}
+ else if(t.dataset.evidenceDelete){if(confirm('이 증거 메타데이터를 삭제하시겠습니까? 연결된 세션·이벤트의 기존 기록은 변경하지 않습니다.')){state.artifacts=state.artifacts.filter(x=>x.id!==t.dataset.evidenceDelete);save();closeModal();render()}}
+});
+document.getElementById('logPicker').addEventListener('change',async e=>{const files=[...e.target.files];e.target.value='';try{await inspectUploads(files)}catch(err){alert('분석 실패: '+err.message)}});
+document.addEventListener('dragover',e=>{if(e.target.closest('#diagDrop')){e.preventDefault();e.target.closest('#diagDrop').classList.add('dragging')}});
+document.addEventListener('dragleave',e=>{if(e.target.id==='diagDrop')e.target.classList.remove('dragging')});
+document.addEventListener('drop',async e=>{const drop=e.target.closest('#diagDrop');if(!drop)return;e.preventDefault();drop.classList.remove('dragging');try{await inspectUploads(e.dataTransfer.files)}catch(err){alert('분석 실패: '+err.message)}});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.id==='diagDrop'){e.preventDefault();document.getElementById('logPicker').click()}});
+
+// PSH AI ARENA 검증 관제실 V1.2 — 오프라인 실물 출력/다중 형식 대조.
+// 공식 PSH 저장소(2026-11-12 검사)는 빈 저장소. 실제 출력 스키마 미확인.
+// 파일 열기는 명시적인 사용자 선택으로만 수행되며 원본 EDOPro/CDB/Lua에 쓰지 않는다.
+const ARENA_V12_MAX_BATCH=60*1024*1024,ARENA_V12_MAX_FILE=12*1024*1024,ARENA_V12_MAX_COUNT=150;
+const ARENA_ALLOWED=['json','jsonl','csv','log','txt','yrp','yrpx','zip'];
+const ARENA_FIELDS=[['sessionId','세션 ID'],['targetGames','목표 경기 수'],['completedGames','완료 경기 수'],['wins','승'],['losses','패'],['draws','무']];
+let stagedArena=[],arenaWarnings=[],arenaFilter='',arenaSearch='',arenaAnalysisName='';
+function ensureArenaState(){
+ if(!Array.isArray(state.arenaFiles))state.arenaFiles=[];
+ if(!Array.isArray(state.arenaBatches))state.arenaBatches=[];
+ if(!state.arenaFieldMap||typeof state.arenaFieldMap!=='object'||Array.isArray(state.arenaFieldMap))state.arenaFieldMap={};
+ return state.arenaFiles;
+}
+ensureArenaState();
+// V1.1 백업/스키마를 유지하고 새 상태는 선택적 필드로 확장.
+tabs.push(['arenaSync','⇆','출력 연동 · 대조']);
+const _unpackZipV11=unpackZip;
+unpackZip=async function(name,buffer,extensions){
+ // V1.1 기본 ZIP 검사는 그대로 유지. V1.2 전용 Replay 확장자 검사 시 허용 목록 주입.
+ return _unpackZipV11(name,buffer,extensions);
+};
+function arenaIsOwnBackup(obj){return !!(obj&&typeof obj==='object'&&((obj.app==='PSH AI ARENA 검증 관제실')||(obj.schemaVersion===SCHEMA&&obj.recordDate&&obj.weeklyDecisions)))}
+function arenaPreviewObj(data,ext){
+ if(ext==='json'){
+  if(data&&typeof data==='object'&&!Array.isArray(data)){
+   if(data.session&&typeof data.session==='object'&&!Array.isArray(data.session))return data.session;
+   if(data.data?.session&&typeof data.data.session==='object'&&!Array.isArray(data.data.session))return data.data.session;
+   if(data.summary&&typeof data.summary==='object'&&!Array.isArray(data.summary))return data.summary;
+   if(Array.isArray(data.sessions)&&data.sessions.length===1)return data.sessions[0];
+   if(Array.isArray(data.data?.sessions)&&data.data.sessions.length===1)return data.data.sessions[0];
+   return data;
+  }
+  if(Array.isArray(data)&&data.length===1)return data[0];
+ }
+ if(ext==='jsonl'||ext==='csv')return Array.isArray(data)&&data.length===1?data[0]:null;
+ return null;
+}
+function arenaFlatten(obj,prefix='',out={},depth=0){
+ if(depth>2||!obj||typeof obj!=='object'||Array.isArray(obj))return out;
+ for(let [k,v] of Object.entries(obj)){
+  if(Object.keys(out).length>80)break;
+  const key=prefix?prefix+'.'+k:k;
+  if(v!==null&&typeof v==='object'&&!Array.isArray(v))arenaFlatten(v,key,out,depth+1);
+  else if(!Array.isArray(v)&&['string','number','boolean'].includes(typeof v))out[key]=v;
+ }
+ return out;
+}
+function arenaMappedCandidate(obj,map){
+ if(!obj||!map||!Object.keys(map).some(k=>map[k]))return null;
+ const flat=arenaFlatten(obj),out={sessionId:null,targetGames:null,completedGames:null,wins:null,losses:null,draws:null};
+ for(const [field] of ARENA_FIELDS){const path=map[field];if(!path)continue;const val=flat[path];
+  if(field==='sessionId')out.sessionId=typeof val==='string'&&val.trim()?val.trim():null;
+  else out[field]=intIfKnown(val);
+ }
+ if(!out.sessionId&&[out.targetGames,out.completedGames,out.wins,out.losses,out.draws].every(v=>v===null))return null;
+ return out;
+}
+function arenaValidateCandidate(c){
+ if(!c)return '세션 수치 없음';
+ const t=c.targetGames,d=c.completedGames,ks=[c.wins,c.losses,c.draws],n=ks.filter(v=>v!==null).reduce((a,b)=>a+b,0);
+ if((t!==null&&t<0)||(d!==null&&d<0)||(t!==null&&d!==null&&d>t)||(d!==null&&n>d)||(t!==null&&n>t))return '경기 수치 모순';
+ return '';
+}
+function arenaFileCategory(ext){return ['yrp','yrpx'].includes(ext)?'리플레이':ext==='zip'?'ZIP 묶음':['log','txt','jsonl'].includes(ext)?'로그/이벤트':ext.toUpperCase()+' 출력';}
+function arenaKnownDifference(path,sha){const known=ensureArenaState().filter(x=>x.path===path).at(-1);if(!known)return '신규';return known.sha256===sha?'동일':'변경';}
+async function arenaAnalyzeBuffer({path,bytes,source='로컬 파일',zipParent=''}){
+ const ext=diagKind(path),sha256=await shaHex(bytes),base={id:'OUT-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10),path,ext,category:arenaFileCategory(ext),sha256,bytes:bytes.byteLength,source,zipParent,importedAt:new Date().toISOString(),status:'미확인',reviewNotes:'',linkedSession:'',result:'미확인',rowCount:null,candidate:null,candidateError:'',schemaFields:[],change:arenaKnownDifference(path,sha256),previewObject:null,traceCount:null};
+ if(['yrp','yrpx'].includes(ext)){
+  base.result='리플레이 파일 존재 확인 · 디코딩/재생 미검증';return base;
+ }
+ if(ext==='zip'){
+  base.result='ZIP 파일 존재 확인 · 내부 검사 결과 별도';return base;
+ }
+ if(!['json','jsonl','csv','log','txt'].includes(ext)){base.result='미지원 파일';return base;}
+ const txt=new TextDecoder('utf-8',{fatal:false}).decode(bytes);let parsed=null;
+ try{
+  if(ext==='json'){parsed=JSON.parse(txt.replace(/^\ufeff/,''));if(arenaIsOwnBackup(parsed))throw new Error('관제실 자체 백업은 출력 파일 아님');base.result='JSON 구문 정상';base.rowCount=Array.isArray(parsed)?parsed.length:1;}
+  else if(ext==='jsonl'){
+   const lines=txt.split(/\r?\n/).filter(x=>x.trim());if(lines.length>2000)throw new Error('JSONL 행이 2000개를 초과함');parsed=lines.map((l,i)=>{try{return JSON.parse(l)}catch(e){throw new Error('JSONL '+(i+1)+'행 오류')}});base.rowCount=parsed.length;base.result='JSONL '+parsed.length+'행 구문 정상';
+  }else if(ext==='csv'){
+   parsed=parseCsv(txt);base.rowCount=parsed.length;base.result='CSV '+parsed.length+'행 읽음 · 원본 형식 인증 아님';
+  }else{
+   const t=analyzeTrace(traceLines(txt,null,ext));base.traceCount=t.counts.msg;base.result=t.counts.msg||t.counts.watchdog?'로그 패턴 관측 · 원인 미확정':'텍스트 로그 수집';
+  }
+  if(parsed!==null){
+   const s=sessionCandidate(parsed);base.candidate=s.candidate;base.candidateError=s.conflict?'경기 수치 모순':s.reason;
+   base.previewObject=arenaPreviewObj(parsed,ext);base.schemaFields=Object.keys(arenaFlatten(base.previewObject));
+   if(!base.candidate){const mapped=arenaMappedCandidate(base.previewObject,state.arenaFieldMap);if(mapped){base.candidate=mapped;base.candidateError='사용자 저장 매핑으로 읽음 · 수동 확인 필요';}}
+   if(base.candidate){const conflict=arenaValidateCandidate(base.candidate);if(conflict)base.candidateError=conflict;}
+  }
+ }catch(e){base.result='파싱/형식 오류';base.candidateError=String(e.message).slice(0,180);base.candidate=null;}
+ return base;
+}
+async function arenaStage(files,{folder=false}={}){
+ const list=[...files];if(!list.length)return;
+ stagedArena=[];arenaWarnings=[];let total=0,seen=0;
+ if(list.length>ARENA_V12_MAX_COUNT)arenaWarnings.push('총 '+list.length+'개 중 '+ARENA_V12_MAX_COUNT+'개만 검사');
+ for(const f of list.slice(0,ARENA_V12_MAX_COUNT)){
+  const ext=diagKind(f.name);if(!ARENA_ALLOWED.includes(ext)){
+   if(['cdb','lua','exe','dll','ydk'].includes(ext))arenaWarnings.push(f.name+': EDOPro/CDB/Lua 등 보호 대상 파일은 읽기 제외');
+   continue;
+  }
+  if(f.size>ARENA_V12_MAX_FILE||total+f.size>ARENA_V12_MAX_BATCH){arenaWarnings.push(f.name+': 크기 제한으로 제외');continue;}
+  total+=f.size;
+  try{
+   const buffer=await f.arrayBuffer(),path=(folder&&f.webkitRelativePath?f.webkitRelativePath:f.name);
+   if(ext==='zip'){
+    const zipEntry=await arenaAnalyzeBuffer({path,bytes:new Uint8Array(buffer)});
+    const zip=await unpackZip(path,buffer,['json','jsonl','csv','log','txt','yrp','yrpx']);
+    zipEntry.result=zip.errors.length?'ZIP 일부 항목 미검증 · 상세 경고 참고':zip.outputs.length?'ZIP 구조·추출 파일 CRC32 검사 통과':'ZIP 구조 확인 · 지원 파일 없음 (CRC 검사 대상 없음)';
+    zipEntry.rowCount=zip.outputs.length;
+    stagedArena.push(zipEntry);arenaWarnings.push(...zip.errors.map(x=>path+' :: '+x));
+    for(const item of zip.outputs){if(stagedArena.length>=ARENA_V12_MAX_COUNT)break;stagedArena.push(await arenaAnalyzeBuffer({path:path+' :: '+item.name,bytes:item.bytes,source:'ZIP 안의 파일',zipParent:path}));}
+   }else stagedArena.push(await arenaAnalyzeBuffer({path,bytes:new Uint8Array(buffer),source:folder?'사용자 선택 폴더':'사용자 선택 파일'}));
+  }catch(e){arenaWarnings.push(f.name+': '+e.message)}
+  if(stagedArena.length>=ARENA_V12_MAX_COUNT){arenaWarnings.push('분석 대상 150개 제한 도달');break}
+  seen++;
+ }
+ arenaAnalysisName=folder?'선택한 폴더':'선택한 파일/ZIP';
+ tab='arenaSync';render();
+ if(stagedArena.length)arenaStageModal();else alert('지원 형식 파일이 없습니다. '+arenaWarnings.join(' / '));
+}
+function arenaGroups(items){
+ const byId=new Map();for(const x of items){const c=x.candidate;if(!c?.sessionId||arenaValidateCandidate(c))continue;
+  const group=byId.get(c.sessionId)||[];group.push(x);byId.set(c.sessionId,group);
+ }
+ let problems=[];
+ for(const [id,arr] of byId){if(arr.length<2)continue;
+  for(const [key,label] of ARENA_FIELDS.filter(x=>x[0]!=='sessionId')){
+   let vals=[...new Set(arr.map(a=>a.candidate[key]).filter(v=>v!==null))];if(vals.length>1)problems.push({id,field:key,label,vals,paths:arr.map(a=>a.path)});
+  }
+ }
+ return {byId,problems};
+}
+function arenaStoredConflicts(){
+ const byBatch=new Map();for(const x of ensureArenaState()){const id=x.batchId||'이전버전';if(!byBatch.has(id))byBatch.set(id,[]);byBatch.get(id).push(x)}
+ return [...byBatch.entries()].flatMap(([batch,items])=>arenaGroups(items).problems.map(p=>({...p,batch})));
+}
+function arenaFilename(name){return name.length>88?name.slice(0,40)+'…'+name.slice(-42):name}
+function arenaStageModal(){
+ const {problems}=arenaGroups(stagedArena);const root=document.getElementById('modalRoot');
+ root.innerHTML=`<div class="dialogoverlay" id="overlay"><div class="dialog arena-modal" role="dialog" aria-modal="true"><div class="rowhead"><h2>출력 파일 미리보기 · ${stagedArena.length}개</h2><button class="btn sm" data-action="arena-cancel">닫기 ✕</button></div><p class="hint">로컬 파일의 존재·형식·해시만 확인합니다. 실제 경기 완주나 다운로드 경로를 자동 승인하지 않습니다. 파일의 승패·완료 수치 반영은 개별 동의가 필요합니다.</p>${problems.length?`<div class="diagalert">동일 수집 묶음 수치 불일치 ${problems.length}건 발견. 해당 세션의 자동 반영을 막습니다: ${problems.map(p=>h(p.id+' '+p.label+': '+p.vals.join(' / '))).join(' · ')}</div>`:''}${arenaWarnings.length?`<div class="diagalert">검사 중 경고: ${h(arenaWarnings.join(' / ').slice(0,1400))}</div>`:''}
+<div class="arena-stage-scroll">${stagedArena.map((f,i)=>{
+ const c=f.candidate,known=state.sessions.some(s=>s.id===c?.sessionId)?c.sessionId:'';
+ const conflicts=problems.some(p=>p.id===c?.sessionId);const invalid=arenaValidateCandidate(c)||conflicts||f.result==='파싱/형식 오류';
+ return `<article class="arena-stage-item"><div class="rowhead"><strong class="monospace">${h(arenaFilename(f.path))}</strong>${tag(f.change)}</div>
+ <div class="smallnote">${h(f.category)} · ${byteSize(f.bytes)} · SHA256 ${h(f.sha256.slice(0,19))}… · ${h(f.result)}</div>
+ ${f.candidateError?`<div class="smallnote" style="color:var(--orange);margin:7px 0">${h(f.candidateError)}</div>`:''}
+ ${c?`<div class="smallnote" style="margin-top:8px">세션 ${val(c.sessionId)} · 목표 ${val(c.targetGames)} / 완료 ${val(c.completedGames)} / ${val(c.wins)}승 ${val(c.losses)}패 ${val(c.draws)}무</div>`:''}
+ <div class="arena-choice"><label class="smallnote">세션 연결</label><select class="field" data-arena-link="${i}"><option value="">연결하지 않음</option>${state.sessions.map(s=>`<option value="${h(s.id)}" ${known===s.id?'selected':''}>${h(s.id)}</option>`).join('')}</select></div>
+ <label class="diagtoggle smallnote"><input type="checkbox" data-arena-apply="${i}" ${!c||invalid?'disabled':''}> 명시적 수치를 연결 세션에 반영 (승인 상태는 미확인)</label>
+ ${f.previewObject?`<button class="btn sm" data-arena-mapping="${i}">이 파일의 필드 매핑</button>`:''}
+ </article>`}).join('')}</div><div class="dialogfooter"><button class="btn" data-action="arena-cancel">취소</button><button class="btn primary" data-action="arena-commit">증거 목록에 기록</button></div></div></div>`;
+}
+function arenaMappingModal(index){
+ const f=stagedArena[index];if(!f||!f.previewObject)return;
+ const map=state.arenaFieldMap||{},keys=Object.keys(arenaFlatten(f.previewObject));
+ document.getElementById('modalRoot').innerHTML=`<div class="dialogoverlay" id="overlay"><div class="dialog" role="dialog" aria-modal="true"><h2>출력 필드 매핑</h2><p class="hint">실제 파일의 필드명을 직접 선택합니다. 이 매핑은 브라우저에 저장되며, 이후 파일의 숫자를 자동 승인하지는 않습니다. 단일 세션 자료에만 적용됩니다.</p><div class="formgrid">${ARENA_FIELDS.map(([field,label])=>`<div class="formgroup"><label>${h(label)}</label><select class="field" data-arena-field="${field}"><option value="">매핑 없음</option>${keys.map(k=>`<option value="${h(k)}" ${map[field]===k?'selected':''}>${h(k)} = ${h(String(arenaFlatten(f.previewObject)[k]).slice(0,36))}</option>`).join('')}</select></div>`).join('')}</div><div class="dialogfooter"><button class="btn" data-action="arena-map-back">취소</button><button class="btn primary" data-arena-map-save="${index}">매핑 적용</button></div></div></div>`;
+}
+function arenaCommit(){
+ ensureArenaState();const root=document.getElementById('modalRoot'),{problems}=arenaGroups(stagedArena);
+ let added=0,duplicate=0,updated=0,linked=0;const when=new Date().toISOString();
+ const batchId='BATCH-'+Date.now().toString(36);const groupNames=[];
+ for(let i=0;i<stagedArena.length;i++){
+  const item=stagedArena[i],linkedId=root.querySelector(`[data-arena-link="${i}"]`)?.value||'',apply=root.querySelector(`[data-arena-apply="${i}"]`)?.checked===true;
+  const old=state.arenaFiles.find(x=>x.path===item.path&&x.sha256===item.sha256);
+  if(old){duplicate++;continue}
+  if(linkedId){linked++;groupNames.push(linkedId)}
+  let record={...item,previewObject:undefined,schemaFields:item.schemaFields.slice(0,60),linkedSession:linkedId,importedAt:when,batchId};delete record.previewObject;
+  state.arenaFiles.push(record);added++;
+  if(apply&&linkedId&&item.candidate&&!problems.some(p=>p.id===item.candidate.sessionId)&&!arenaValidateCandidate(item.candidate)){
+   const s=state.sessions.find(x=>x.id===linkedId);if(!s)continue;
+   const c=item.candidate;
+   // 동명이인 세션 자동 귀속 차단: ID가 명시되어 있으면 반드시 일치해야 한다.
+   if(c.sessionId&&c.sessionId!==linkedId){arenaWarnings.push(item.path+': 기록된 세션 ID와 선택 세션이 달라 수치 반영 제외');continue}
+   const fields=['targetGames','completedGames','wins','losses','draws'];let proposed={};for(const k of fields)proposed[k]=c[k]??s[k];
+   if(arenaValidateCandidate(proposed)) {arenaWarnings.push(item.path+': 세션 수치 합계가 모순되어 반영 제외');continue}
+   for(const k of fields)if(c[k]!==null)s[k]=c[k];
+   s.resultVerified='미확인';updated++;
+   s.logRef=[s.logRef,`[V1.2 미승인 출력] ${item.path} / SHA256 ${item.sha256}`].filter(Boolean).join(' | ');
+  }
+ }
+ state.arenaBatches.push({id:batchId,when,source:arenaAnalysisName,items:added,duplicates:duplicate,conflicts:problems.length,warnings:arenaWarnings.slice(0,35),linkedSessionIds:[...new Set(groupNames)],status:'미확인'});
+ stagedArena=[];save();closeModal();render();
+ alert(`출력 증거 ${added}개 등록 · 동일 파일 ${duplicate}개 제외 · 수치 수동 반영 ${updated}건 · 교차 형식 충돌 ${problems.length}건. 모든 승패·완주 승인 상태는 미확인입니다.${arenaWarnings.length?'\n경고: '+arenaWarnings.join(' / ').slice(0,550):''}`);
+}
+function arenaFilesFiltered(){return ensureArenaState().filter(f=>(!arenaFilter||f.category===arenaFilter)&&(!arenaSearch||[f.path,f.category,f.linkedSession,f.result,f.sha256].join(' ').toLowerCase().includes(arenaSearch.toLowerCase()))).slice().reverse();}
+function arenaSync(){
+ const files=arenaFilesFiltered(),all=ensureArenaState();const bySession=new Map();for(const f of all){const id=f.linkedSession||f.candidate?.sessionId;if(id){if(!bySession.has(id))bySession.set(id,new Set());bySession.get(id).add(f.ext.toLowerCase());}}
+ const problems=arenaStoredConflicts();
+ return `${head('실제 출력 파일 연동 · 구조 대조','로컬 PSH AI ARENA의 실제 출력 폴더, ZIP, 로그, CSV/JSON, 리플레이 파일을 직접 선택해 대조합니다. GitHub PSH-AI-ARENA 저장소는 2026-11-12 확인 시 비어 있어 공식 출력 스키마는 미확인입니다.')}
+ <div class="grid arena-kpis">${kpi('파일 실물 증거',all.length,'선택한 로컬 파일의 SHA-256')}${kpi('가져오기 묶음',state.arenaBatches.length,'수동 수집 · 실시간 연동 아님')}${kpi('동일 묶음 불일치',problems.length,'같은 수집 회차에서 동일 세션 수치 불일치','orange')}${kpi('실전 완주 승인','미확인','형식/파일 존재와 대전 완주는 다름','red')}</div>
+ <section class="panel full"><div class="rowhead"><h2>PSH AI ARENA 출력 가져오기</h2><div class="minirow"><button class="btn primary" data-action="arena-folder">+ 출력 폴더 선택</button><button class="btn" data-action="arena-files">파일 · ZIP 선택</button><button class="btn sm" data-action="arena-manifest">증거 목록 JSON</button><button class="btn sm" data-action="arena-csv">증거 목록 CSV</button></div></div><div class="arena-drop" id="arenaDrop" tabindex="0" role="button">선택한 출력 폴더의 JSON · CSV · LOG · ZIP · YRP · YRPX 파일을 분석<br><span class="smallnote">브라우저 내 처리 · 로컬 엔진 실행 없음 · 전체 60MB/회 · 파일 12MB/개 · 최대 150개</span></div>
+ <div class="arena-note"><strong>연동 상태:</strong> 수동 파일 선택 모드. V2.4 경기장 대시보드 <code>127.0.0.1:8765</code>에 연결하거나 대전을 구동하지 않습니다. CDB/Lua/EXE 파일은 수집에서 제외하며 모든 기존 증거와 수치는 유지합니다.</div></section>
+ <section class="panel full"><div class="rowhead"><h2>세션별 파일 형식 대조</h2>${tag('원본 다운로드 경로 미확인')}</div>${table(['세션 ID','JSON','CSV','ZIP','로그','리플레이','증거 상태'],state.sessions.map(s=>{const f=all.filter(x=>x.linkedSession===s.id),exts=new Set(f.map(x=>x.ext)),check=xs=>xs.some(x=>exts.has(x));return `<tr><td class="monospace">${h(s.id)}</td><td>${tag(check(['json'])?'파일 관측':'미확인')}</td><td>${tag(check(['csv'])?'파일 관측':'미확인')}</td><td>${tag(check(['zip'])?'파일 관측':'미확인')}</td><td>${tag(check(['log','txt','jsonl'])?'파일 관측':'미확인')}</td><td>${tag(check(['yrp','yrpx'])?'파일 관측':'미확인')}</td><td>${tag(f.length?'증거 수집':'미확인')}</td></tr>`}))}<p class="panel-note">파일 관측은 브라우저에서 실제 선택한 파일을 읽었다는 뜻입니다. 해당 파일이 경기장 다운로드에서 생성되었는지, 리플레이가 재생 가능한지, 실제 완주했는지는 별도로 검증해야 합니다.</p></section>
+ ${problems.length?`<section class="panel full"><h2>주의: 같은 수집 회차의 세션 수치 불일치 ${problems.length}건</h2><div class="cardlist" style="margin-top:12px">${problems.slice(0,20).map(x=>`<div class="linecard"><strong>${h(x.id)} · ${h(x.label)}: ${h(x.vals.join(' ≠ '))}</strong><div class="details">${h(x.paths.join(' / ').slice(0,300))}<br>자동 반영·승인하지 않음</div></div>`).join('')}</div></section>`:''}
+ <section class="panel full"><div class="rowhead"><h2>증거 파일 목록 ${files.length}개</h2><div class="minirow"><input class="field search" id="arenaSearch" placeholder="경로, SHA256, 세션 검색" value="${h(arenaSearch)}"><select class="field" id="arenaFilter"><option value="">전체 형식</option>${[...new Set(all.map(x=>x.category))].map(c=>`<option value="${h(c)}" ${arenaFilter===c?'selected':''}>${h(c)}</option>`).join('')}</select></div></div>${table(['파일 / SHA256','형식·상태','크기 / 이전 대비','세션','검증','관리'],files.slice(0,120).map(f=>`<tr><td class="monospace"><strong>${h(arenaFilename(f.path))}</strong><div class="small" title="${h(f.sha256)}">${h(f.sha256.slice(0,24))}…</div></td><td>${tag(f.category)}<div class="small">${h(f.result)}</div></td><td>${byteSize(f.bytes)}<div class="small">${tag(f.change)}</div></td><td class="monospace">${val(f.linkedSession)}</td><td>${tag(f.status)}</td><td><button class="textbtn" data-arena-detail="${h(f.id)}">보기 · 수정</button></td></tr>`))}<p class="panel-note">파일 자체 내용은 저장하지 않고 경로·SHA256·메타데이터·명시적 세션 후보만 저장합니다. 원본은 컴퓨터에 그대로 남습니다. JSON 백업에 모든 증거 메타데이터가 포함됩니다.</p></section>
+ <section class="panel full"><div class="rowhead"><h2>최근 수집 이력</h2>${tag('업로드 서버 없음')}</div>${state.arenaBatches.slice(-10).reverse().map(b=>`<div class="linecard" style="margin-bottom:8px"><strong>${h(b.id)}</strong> · ${h(b.source)} <span class="muted">${h(b.when)}</span><div class="details">신규 ${b.items}개 / 중복 ${b.duplicates}개 / 충돌 ${b.conflicts}건 ${b.warnings?.length?' · 경고 '+b.warnings.length+'건':''}</div></div>`).join('')||'<div class="empty">아직 수집한 출력 파일이 없습니다.</div>'}</section>
+ ${panel('실제 검증과 파일 형식 검증의 경계',`<div class="cardlist"><div class="linecard"><strong>1. 실제 PSH 소스 스키마: 미확인</strong><div class="details">GitHub 저장소가 비어 있어 데이터 모델이 동일한지 아직 대조할 수 없습니다. 단일 기록의 명시된 필드 또는 사용자가 지정한 매핑만 읽습니다.</div></div><div class="linecard"><strong>2. 다중 자료 대조</strong><div class="details">같은 수집 회차에서 동일 session_id의 목표·완료·승패 값이 충돌하면 경고하고 수치 반영을 막습니다. 서로 다른 시점의 수치 변화는 별도로 비교합니다. 필드가 없으면 미확인 상태입니다.</div></div><div class="linecard"><strong>3. ISSUE-001 계속 미해결</strong><div class="details">MSG16 이후 OCG_DuelProcess 교착은 출력 파일 수집이나 회귀 결과만으로 해결 처리하지 않습니다. 220/275 재현 및 실제 완주 확인은 별도 승인입니다.</div></div></div>`)}`;
+}
+function arenaDetail(id){let f=ensureArenaState().find(x=>x.id===id);if(!f)return;
+ document.getElementById('modalRoot').innerHTML=`<div class="dialogoverlay" id="overlay"><div class="dialog" role="dialog" aria-modal="true"><div class="rowhead"><h2>파일 증거 상세</h2><button class="btn sm" data-action="close-modal">닫기 ✕</button></div><p class="smallnote monospace">${h(f.path)}<br>SHA256 ${h(f.sha256)}<br>수집 ${h(f.importedAt)} · ${h(f.source)}</p><p class="panel-note">${h(f.result)}. 파일 존재·해시 사실 이외에는 자동 검증하지 않습니다.</p><div class="formgrid"><div class="formgroup"><label>수동 검토 상태</label><select class="field" id="arenaReview"><option ${f.status==='미확인'?'selected':''}>미확인</option><option ${f.status==='파일 내용 검토'?'selected':''}>파일 내용 검토</option><option ${f.status==='파일 구조 확인'?'selected':''}>파일 구조 확인</option></select></div><div class="formgroup"><label>연결 세션</label><select class="field" id="arenaLinked"><option value="">미연결</option>${state.sessions.map(s=>`<option value="${h(s.id)}" ${f.linkedSession===s.id?'selected':''}>${h(s.id)}</option>`).join('')}</select></div><div class="formgroup wide"><label>검토 메모</label><textarea class="field" id="arenaNotes">${h(f.reviewNotes||'')}</textarea></div></div><div class="dialogfooter"><button class="btn danger" data-arena-delete="${h(id)}">기록 삭제</button><button class="btn" data-action="close-modal">취소</button><button class="btn primary" data-arena-detail-save="${h(id)}">저장</button></div></div></div>`;
+}
+function arenaExportManifest(csv=false){ensureArenaState();const meta=state.arenaFiles.map(f=>({path:f.path,sha256:f.sha256,bytes:f.bytes,category:f.category,source:f.source,linkedSession:f.linkedSession,status:f.status,observedAt:f.importedAt,notes:f.reviewNotes,parseResult:f.result}));
+ if(!csv)return download('PSH_AI_ARENA_출력증거_목록_'+seoulDay()+'.json',JSON.stringify({app:'PSH AI ARENA 출력증거',version:'V1.2',exportedAt:new Date().toISOString(),verification:'로컬 수동 수집 · 실경기 검증 아님',files:meta},null,2),'application/json;charset=utf-8');
+ const cols=['path','sha256','bytes','category','source','linkedSession','status','observedAt','notes','parseResult'];let lines=[cols,...meta.map(x=>cols.map(k=>String(x[k]??'')))].map(r=>r.map(v=>'"'+v.replace(/"/g,'""')+'"').join(','));download('PSH_AI_ARENA_출력증거_목록_'+seoulDay()+'.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8');
+}
+// 별도 탭 렌더링. 기존 V1.0~V1.1 9개 탭/파일 구조 보존.
+const _oldRenderV11=render;
+render=function(){if(tab!=='arenaSync'){_oldRenderV11();return;}nav();document.getElementById('heading').textContent='출력 연동 · 대조';document.getElementById('subtitle').textContent='기록 기준 '+state.recordDate+' · 수동 파일 선택 · 공식 스키마 미확인 · 오늘 '+seoulDay()+' (KST)';document.getElementById('content').innerHTML=arenaSync()};
+// HTML 안전: 통합되는 필드 값은 기존 h() 이스케이프를 통해 출력.
+document.addEventListener('click',async e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.action==='arena-folder')document.getElementById('arenaFolderPicker').click();
+ else if(t.dataset.action==='arena-files')document.getElementById('arenaFilePicker').click();
+ else if(t.dataset.action==='arena-cancel'){stagedArena=[];closeModal();}
+ else if(t.dataset.action==='arena-map-back')arenaStageModal();
+ else if(t.dataset.action==='arena-commit')arenaCommit();
+ else if(t.dataset.action==='arena-manifest')arenaExportManifest(false);
+ else if(t.dataset.action==='arena-csv')arenaExportManifest(true);
+ else if(t.dataset.arenaMapping!==undefined)arenaMappingModal(Number(t.dataset.arenaMapping));
+ else if(t.dataset.arenaMapSave!==undefined){const i=Number(t.dataset.arenaMapSave),f=stagedArena[i];if(f){const map={};for(const [key] of ARENA_FIELDS)map[key]=document.querySelector('[data-arena-field="'+key+'"]')?.value||'';state.arenaFieldMap=map;let c=arenaMappedCandidate(f.previewObject,map);f.candidate=c;f.candidateError=c?(arenaValidateCandidate(c)||'사용자가 직접 매핑한 후보 · 미승인'):'매핑된 수치/ID 없음';save();arenaStageModal();}}
+ else if(t.dataset.arenaDetail)arenaDetail(t.dataset.arenaDetail);
+ else if(t.dataset.arenaDetailSave){let f=state.arenaFiles.find(x=>x.id===t.dataset.arenaDetailSave);if(f){f.status=document.getElementById('arenaReview').value;f.linkedSession=document.getElementById('arenaLinked').value;f.reviewNotes=document.getElementById('arenaNotes').value;save();closeModal();render()}}
+ else if(t.dataset.arenaDelete){if(confirm('선택한 파일 증거 메타데이터를 삭제합니까? 실제 파일은 변경되지 않습니다.')){state.arenaFiles=state.arenaFiles.filter(x=>x.id!==t.dataset.arenaDelete);save();closeModal();render()}}
+});
+document.getElementById('arenaFilePicker').addEventListener('change',async e=>{const f=[...e.target.files];e.target.value='';try{await arenaStage(f)}catch(err){alert('출력 수집 실패: '+err.message)}});
+document.getElementById('arenaFolderPicker').addEventListener('change',async e=>{const f=[...e.target.files];e.target.value='';try{await arenaStage(f,{folder:true})}catch(err){alert('폴더 검사 실패: '+err.message)}});
+document.addEventListener('input',e=>{if(e.target.id==='arenaSearch'){arenaSearch=e.target.value;const n=e.target.selectionStart;render();let el=document.getElementById('arenaSearch');el?.focus();el?.setSelectionRange(n,n)}});
+document.addEventListener('change',e=>{if(e.target.id==='arenaFilter'){arenaFilter=e.target.value;render()}});
+document.addEventListener('dragover',e=>{if(e.target.closest('#arenaDrop'))e.preventDefault()});
+document.addEventListener('drop',async e=>{if(!e.target.closest('#arenaDrop'))return;e.preventDefault();try{await arenaStage(e.dataTransfer.files)}catch(err){alert('드롭 검사 실패: '+err.message)}});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.id==='arenaDrop'){e.preventDefault();document.getElementById('arenaFilePicker').click()}});
+render();
+
+</script>
+</body></html>
